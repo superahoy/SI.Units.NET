@@ -293,17 +293,12 @@ namespace SI.Units.NET
 
         public static Length Parse(string s, IFormatProvider? provider)
         {
-            var text = s.Trim();
+            var tokens  = s.Split(' ');
 
-            var numberRegex = new Regex(@"-?\d+\.?\d*");
-            var unitRegex   = new Regex(@"\s?[a-zA-Zμ]{2}");
+            var value   = double.Parse(tokens[0]);
+            var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
 
-            var v = numberRegex.Match(text).Value;
-            var u = unitRegex.Match(text).Value.Trim();
-            
-            var index = Array.IndexOf(Symbols, u);
-
-            return new Length(double.Parse(v), (Units)index);
+            return new Length(value, unit);
         }
 
         public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Length result)
