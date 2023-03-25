@@ -327,6 +327,16 @@ namespace SI.Units.NET
 
         #region OperatorOverloading
 
+        public static Length operator++(Length value)
+        {
+            return new Length(value.Value + 1, value.Unit);
+        }
+
+        public static Length operator--(Length value)
+        {
+            return new Length(value.Value - 1, value.Unit);
+        }
+
         public static Length operator/(Length value, double scalar)
         {
             return new Length(value.Value / scalar, value.Unit);
