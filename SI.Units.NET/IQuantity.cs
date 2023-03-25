@@ -7,8 +7,9 @@
     /// <typeparam name="T"></typeparam>
     public interface IQuantity<T> : IFormattable,
                                     IMathOperations<T>,
+                                    IParsable<T>,
                                     IEquatable<T>,
-                                    IComparable<T> where T : struct
+                                    IComparable<T> where T : struct, IParsable<T>
     {
         /// <summary>
         /// Quantity value (amount)

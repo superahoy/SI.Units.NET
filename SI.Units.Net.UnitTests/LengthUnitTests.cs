@@ -72,5 +72,22 @@ namespace SI.Units.NET.UnitTests
             Assert.AreEqual("{\"Value\":100,\"Unit\":\"Centimeter\"}", text);
             Assert.AreEqual(a, restored);
         }
+
+        [TestMethod]
+        public void ParseTest()
+        {
+            var text = "100 km";
+            var parsed = Length.Parse(text, null);
+            var expected = new Length(100, Length.Units.Kilometer);
+            
+            Assert.AreEqual(expected, parsed);
+
+            text = "100 μm";
+            parsed = Length.Parse(text, null);
+            
+            expected = new Length(100, Length.Units.Micrometer);
+            
+            Assert.AreEqual(expected, parsed);
+        }
     }
 }
