@@ -27,6 +27,11 @@
         /// <returns>Value in base unit of measure</returns>
         double BaseValue();
 
+        /// <summary>
+        /// Formats the value of the current instance using the specified format.
+        /// </summary>
+        /// <param name="format">The format to use</param>
+        /// <returns>The value of the current instance in the specified format</returns>
         string ToString(string? format);
     }
 }
