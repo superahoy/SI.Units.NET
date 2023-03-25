@@ -41,7 +41,7 @@ namespace SI.Units.NET
         };
 
         /// <summary>
-        /// Conversion factors from base unit to unit of measure
+        /// Conversion factors from target unit to base unit.
         /// </summary>
         private static readonly double[] Factors =
         {
@@ -71,6 +71,10 @@ namespace SI.Units.NET
             0.3048 * 660
         };
 
+        /// <summary>
+        /// Unit of measure symbols for each Unit. Order of
+        /// array must match Units order / int value
+        /// </summary>
         private static readonly string[] Symbols =
         {
             BaseSymbol,
@@ -107,8 +111,8 @@ namespace SI.Units.NET
         [JsonConstructor]
         public Length(double value, Units unit)
         {
-            Value = value; 
-            Unit = unit;
+            Value   = value; 
+            Unit    = unit;
         }
 
         /// <inheritdoc/>
@@ -289,9 +293,10 @@ namespace SI.Units.NET
             return Double.IsInfinity(Value);
         }
 
+        /// <inheritdoc/>
         public static Length Parse(string s, IFormatProvider? provider)
         {
-            var tokens  = s.Split(' ');
+            var tokens  = s.Split(' ', 2);
 
             var value   = double.Parse(tokens[0]);
             var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
@@ -299,9 +304,25 @@ namespace SI.Units.NET
             return new Length(value, unit);
         }
 
+        /// <inheritdoc/>
         public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Length result)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(s))
+            {
+                result = default;
+                return false;
+            }
+
+            try
+            {
+                result = Parse(s, provider);
+                return true;
+            }
+            catch
+            {
+                result = default(Length);
+                return false;
+            }
         }
 
         #region OperatorOverloading
