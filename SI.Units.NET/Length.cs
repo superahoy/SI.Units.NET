@@ -34,8 +34,10 @@ namespace SI.Units.NET
             Yard,
             Mile,
             NauticalMile,
+            Link,
             Chain,
-            Rod
+            Rod,
+            Furlong,
         };
 
         /// <summary>
@@ -58,13 +60,15 @@ namespace SI.Units.NET
             Prefixes.Giga.Factor,
             Prefixes.Tera.Factor,
             Prefixes.Peta.Factor,
-            1.0 / 0.3048 / 12.0,
-            1.0 / 0.3048,
-            1.0 / 0.3048 * 3.0,
-            1.0 / 0.3048 * 5280.0,
-            1.0 / 1852.0,
-            1.0 / 0.3048 * 66,
-            1.0 / 0.3048 * 16.5
+            0.3048 / 12.0,
+            0.3048,
+            0.3048 * 3.0,
+            0.3048 * 5280.0,
+            1852.0,
+            0.3048 * 0.66,
+            0.3048 * 66,
+            0.3048 * 16.5,
+            0.3048 * 660
         };
 
         private static readonly string[] Symbols =
@@ -89,8 +93,10 @@ namespace SI.Units.NET
             "yd",
             "mi",
             "NM",
+            "lnk",
             "ch",
-            "rod"
+            "rod",
+            "fur"
         };
 
         /// <summary>
