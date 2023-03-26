@@ -1,40 +1,41 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using SI.Units.NET;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-
-namespace SI.Units.NET
-{
-    /// <summary>
-    /// Represents Time Base Quantity type from Table 2. SI base units
-    /// </summary>
-    public readonly struct Time : IQuantity<Time>
+/// <summary>
+/// Represents Mass Base Quantity type from Table 2. SI base units
+/// </summary>
+    public readonly struct Mass : IQuantity<Mass>
     {
         /// <summary> Base unit of measure </summary>
-        public const Units BaseUnit = Units.Second;
+        public const Units BaseUnit = Units.Kilogram;
 
         /// <summary> Base symbol </summary>
-        public const string BaseSymbol = "s";
+        public const string BaseSymbol = "g";
 
-        /// <summary> Supported units of measure for Time Quantity type </summary>
+        /// <summary> Supported units of measure for Mass Quantity type </summary>
         public enum Units
         {
-            Second,
-            Decisecond,
-            Centisecond,
-            Millisecond,
-            Microsecond,
-            Nanosecond,
-            Picosecond,
-            Femtosecond,
-            Decasecond,
-            Hectosecond,
-            Kilosecond,
-            Megasecond,
-            Gigasecond,
-            Terasecond,
-            Petasecond,
-            Minute,
-            Hour,
-            Day
+            Kilogram,
+            Decigram,
+            Centigram,
+            Milligram,
+            Microgram,
+            Nanogram,
+            Picogram,
+            Femtogram,
+            Decagram,
+            Hectogram,
+            Gram,
+            Megagram,
+            Gigagram,
+            Teragram,
+            Petagram,
+            Tonne,
+            Ounce,
+            Pound,
+            Ton,
+            Slug,
+            Stone
         };
 
         /// <summary>
@@ -57,9 +58,15 @@ namespace SI.Units.NET
             Prefixes.Giga.Factor,
             Prefixes.Tera.Factor,
             Prefixes.Peta.Factor,
-            60.0,
-            3600.0,
-            86400.0
+            0.3048 / 12.0,
+            0.3048,
+            0.3048 * 3.0,
+            0.3048 * 5280.0,
+            1852.0,
+            0.3048 * 0.66,
+            0.3048 * 66,
+            0.3048 * 16.5,
+            0.3048 * 660
         };
 
         /// <summary>
@@ -83,18 +90,24 @@ namespace SI.Units.NET
             Prefixes.Giga.Symbol + BaseSymbol,
             Prefixes.Tera.Symbol + BaseSymbol,
             Prefixes.Peta.Symbol + BaseSymbol,
-            "min",
-            "hr",
-            "d"            
+            "in",
+            "ft",
+            "yd",
+            "mi",
+            "NM",
+            "lnk",
+            "ch",
+            "rod",
+            "fur"
         };
 
         /// <summary>
-        /// Create new Time object
+        /// Create new Mass object
         /// </summary>
-        /// <param name="value">Time value (amount)</param>
+        /// <param name="value">Mass value (amount)</param>
         /// <param name="unit">Unit of measure value is in</param>
         [JsonConstructor]
-        public Time(double value, Units unit)
+        public Mass(double value, Units unit)
         {
             Value   = value; 
             Unit    = unit;
@@ -118,9 +131,9 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if ((obj is Time) == false) { return false; }
+            if ((obj is Mass) == false) { return false; }
             
-            return Equals((Time)obj);
+            return Equals((Mass)obj);
         }
 
         /// <inheritdoc/>
@@ -132,13 +145,13 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public Time ToBase()
+        public Mass ToBase()
         {
             return As(BaseUnit);
         }
 
         /// <inheritdoc/>
-        public bool Equals(Time other)
+        public bool Equals(Mass other)
         {
             if (Math.Abs(BaseValue() - other.BaseValue()) > 1.0e-14)
             {
@@ -153,9 +166,9 @@ namespace SI.Units.NET
         /// </summary>
         /// <param name="target">Target unit of measure</param>
         /// <returns>Quantity converted to target unit of measure</returns>
-        public Time As(Units target)
+        public Mass As(Units target)
         {
-            return new Time(Value * Factors[(int)Unit] / Factors[(int)target], target);
+            return new Mass(Value * Factors[(int)Unit] / Factors[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -165,7 +178,7 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public int CompareTo(Time other)
+        public int CompareTo(Mass other)
         {
             return BaseValue().CompareTo(other.BaseValue());
         }
@@ -183,75 +196,75 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public Time Sqrt()
+        public Mass Sqrt()
         {
-            return new Time(Math.Sqrt(Value), Unit);
+            return new Mass(Math.Sqrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Cbrt()
+        public Mass Cbrt()
         {
-            return new Time(Math.Cbrt(Value), Unit);
+            return new Mass(Math.Cbrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Log()
+        public Mass Log()
         {
-            return new Time(Math.Log(Value), Unit);
+            return new Mass(Math.Log(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Log2()
+        public Mass Log2()
         {
-            return new Time(Math.Log2(Value), Unit);
+            return new Mass(Math.Log2(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Log10()
+        public Mass Log10()
         {
-            return new Time(Math.Log10(Value), Unit);
+            return new Mass(Math.Log10(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Pow(double exp)
+        public Mass Pow(double exp)
         {
-            return new Time(Math.Pow(Value, exp), Unit);
+            return new Mass(Math.Pow(Value, exp), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Abs()
+        public Mass Abs()
         {
-            return new Time(Math.Abs(Value), Unit);
+            return new Mass(Math.Abs(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Floor()
+        public Mass Floor()
         {
-            return new Time(Math.Floor(Value), Unit);
+            return new Mass(Math.Floor(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Ceiling()
+        public Mass Ceiling()
         {
-            return new Time(Math.Ceiling(Value), Unit);
+            return new Mass(Math.Ceiling(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Truncate()
+        public Mass Truncate()
         {
-            return new Time(Math.Truncate(Value), Unit);
+            return new Mass(Math.Truncate(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Round()
+        public Mass Round()
         {
-            return new Time(Math.Round(Value), Unit);
+            return new Mass(Math.Round(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public Time Round(int digits)
+        public Mass Round(int digits)
         {
-            return new Time(Math.Round(Value, digits), Unit);
+            return new Mass(Math.Round(Value, digits), Unit);
         }
 
         /// <inheritdoc/>
@@ -279,18 +292,18 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public static Time Parse(string s, IFormatProvider? provider)
+        public static Mass Parse(string s, IFormatProvider? provider)
         {
             var tokens  = s.Split(' ', 2);
 
             var value   = double.Parse(tokens[0]);
             var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
 
-            return new Time(value, unit);
+            return new Mass(value, unit);
         }
 
         /// <inheritdoc/>
-        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Time result)
+        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Mass result)
         {
             if (string.IsNullOrEmpty(s))
             {
@@ -305,78 +318,77 @@ namespace SI.Units.NET
             }
             catch
             {
-                result = default(Time);
+                result = default(Mass);
                 return false;
             }
         }
 
         #region OperatorOverloading
 
-        public static Time operator++(Time value)
+        public static Mass operator++(Mass value)
         {
-            return new Time(value.Value + 1, value.Unit);
+            return new Mass(value.Value + 1, value.Unit);
         }
 
-        public static Time operator--(Time value)
+        public static Mass operator--(Mass value)
         {
-            return new Time(value.Value - 1, value.Unit);
+            return new Mass(value.Value - 1, value.Unit);
         }
 
-        public static Time operator/(Time value, double scalar)
+        public static Mass operator/(Mass value, double scalar)
         {
-            return new Time(value.Value / scalar, value.Unit);
+            return new Mass(value.Value / scalar, value.Unit);
         }
 
-        public static Time operator*(Time value, double scalar)
+        public static Mass operator*(Mass value, double scalar)
         {
-            return new Time(value.Value * scalar, value.Unit);
+            return new Mass(value.Value * scalar, value.Unit);
         }
 
-        public static Time operator*(double scalar, Time value)
+        public static Mass operator*(double scalar, Mass value)
         {
-            return new Time(value.Value * scalar, value.Unit);
+            return new Mass(value.Value * scalar, value.Unit);
         }
 
-        public static Time operator-(Time a)
+        public static Mass operator-(Mass a)
         {
-            return new Time(-a.Value, a.Unit);
+            return new Mass(-a.Value, a.Unit);
         }
 
-        public static Time operator-(Time a, Time b)
-        {
-            if (a.Unit == b.Unit)
-            {
-                return new Time(a.Value - b.Value, a.Unit);
-            }
-
-            return new Time(a.BaseValue() - b.BaseValue(), BaseUnit);
-        }
-
-        public static Time operator+(Time a, Time b)
+        public static Mass operator-(Mass a, Mass b)
         {
             if (a.Unit == b.Unit)
             {
-                return new Time(a.Value + b.Value, a.Unit);
+                return new Mass(a.Value - b.Value, a.Unit);
             }
 
-            return new Time(a.BaseValue() + b.BaseValue(), BaseUnit);
+            return new Mass(a.BaseValue() - b.BaseValue(), BaseUnit);
         }
 
-        public static double operator/(Time a, Time b)
+        public static Mass operator+(Mass a, Mass b)
+        {
+            if (a.Unit == b.Unit)
+            {
+                return new Mass(a.Value + b.Value, a.Unit);
+            }
+
+            return new Mass(a.BaseValue() + b.BaseValue(), BaseUnit);
+        }
+
+        public static double operator/(Mass a, Mass b)
         {
             return a.BaseValue() / b.BaseValue();
         }
 
-        public static bool operator==(Time a, Time b)
+        public static bool operator==(Mass a, Mass b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator!=(Time a, Time b)
+        public static bool operator!=(Mass a, Mass b)
         {
             return !a.Equals(b);
         }
 
         #endregion
     }
-}
