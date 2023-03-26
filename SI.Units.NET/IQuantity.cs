@@ -18,7 +18,8 @@ namespace SI.Units.NET
                                     ISubtractionOperators<T, T, T>,
                                     IDivisionOperators<T, T, double>,
                                     IComparisonOperators<T,T,bool>,
-                                    IUnaryNegationOperators<T, T>,        
+                                    IUnaryNegationOperators<T, T>,
+                                    IMultiplyOperators<T, double, T>,
                                     IComparable<T> where T : struct, IParsable<T>, 
                                                                      IEqualityOperators<T, T, bool>,
                                                                      IIncrementOperators<T>,
@@ -27,7 +28,8 @@ namespace SI.Units.NET
                                                                      ISubtractionOperators<T,T,T>,
                                                                      IDivisionOperators<T, T, double>,
                                                                      IComparisonOperators<T,T,bool>,
-                                                                     IUnaryNegationOperators<T, T>
+                                                                     IUnaryNegationOperators<T, T>,
+                                                                     IMultiplyOperators<T, double, T>                                                                     
     {
         /// <summary>
         /// Quantity value (amount)
