@@ -1,4 +1,6 @@
-﻿namespace SI.Units.NET
+﻿using System.Numerics;
+
+namespace SI.Units.NET
 {
     /// <summary>
     /// IQuantity defines the interface for all Quantity based types, which
@@ -9,7 +11,23 @@
                                     IParsable<T>,
                                     IMathOperations<T>,
                                     IEquatable<T>,
-                                    IComparable<T> where T : struct, IParsable<T>
+                                    IEqualityOperators<T, T, bool>,
+                                    IIncrementOperators<T>,
+                                    IDecrementOperators<T>,
+                                    IAdditionOperators<T, T, T>,
+                                    ISubtractionOperators<T, T, T>,
+                                    IDivisionOperators<T, T, double>,
+                                    IComparisonOperators<T,T,bool>,
+                                    IUnaryNegationOperators<T, T>,        
+                                    IComparable<T> where T : struct, IParsable<T>, 
+                                                                     IEqualityOperators<T, T, bool>,
+                                                                     IIncrementOperators<T>,
+                                                                     IDecrementOperators<T>,
+                                                                     IAdditionOperators<T,T,T>,
+                                                                     ISubtractionOperators<T,T,T>,
+                                                                     IDivisionOperators<T, T, double>,
+                                                                     IComparisonOperators<T,T,bool>,
+                                                                     IUnaryNegationOperators<T, T>
     {
         /// <summary>
         /// Quantity value (amount)

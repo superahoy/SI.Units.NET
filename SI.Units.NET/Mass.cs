@@ -288,6 +288,12 @@ using System.Text.Json.Serialization;
         {
             return Double.IsInfinity(Value);
         }
+            
+        /// <inheritdoc/>
+        public int Sign()
+        {
+            return Math.Sign(Value);
+        }
 
         /// <inheritdoc/>
         public static Mass Parse(string s, IFormatProvider? provider)
@@ -386,6 +392,26 @@ using System.Text.Json.Serialization;
         public static bool operator!=(Mass a, Mass b)
         {
             return !a.Equals(b);
+        }
+        
+        public static bool operator>(Mass a, Mass b)
+        {
+            return a.BaseValue() > b.BaseValue();
+        }
+
+        public static bool operator<(Mass a, Mass b)
+        {
+            return a.BaseValue() < b.BaseValue();
+        }
+
+        public static bool operator>=(Mass a, Mass b)
+        {
+            return a.BaseValue() >= b.BaseValue();
+        }
+
+        public static bool operator<=(Mass a, Mass b)
+        {
+            return a.BaseValue() <= b.BaseValue();
         }
 
         #endregion

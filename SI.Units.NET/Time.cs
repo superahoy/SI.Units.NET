@@ -277,6 +277,12 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
+        public int Sign()
+        {
+            return Math.Sign(Value);
+        }
+
+        /// <inheritdoc/>
         public static Time Parse(string s, IFormatProvider? provider)
         {
             var tokens  = s.Split(' ', 2);
@@ -373,6 +379,26 @@ namespace SI.Units.NET
         public static bool operator!=(Time a, Time b)
         {
             return !a.Equals(b);
+        }
+
+        public static bool operator>(Time a, Time b)
+        {
+            return a.BaseValue() > b.BaseValue();
+        }
+
+        public static bool operator<(Time a, Time b)
+        {
+            return a.BaseValue() < b.BaseValue();
+        }
+
+        public static bool operator>=(Time a, Time b)
+        {
+            return a.BaseValue() >= b.BaseValue();
+        }
+
+        public static bool operator<=(Time a, Time b)
+        {
+            return a.BaseValue() <= b.BaseValue();
         }
 
         #endregion

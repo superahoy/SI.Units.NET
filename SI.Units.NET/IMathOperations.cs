@@ -108,5 +108,8 @@
         /// </summary>
         /// <returns>True if Quantity Value is PositiveInfinity or NegativeInfinity, otherwise false</returns>
         bool IsInfinity();
+
+
+        int Sign();
     }
 }
