@@ -126,8 +126,6 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public double BaseValue()
         {
-            if (Unit == BaseUnit) return Value;
-
             return Value * Factors[(int)Unit] / Factors[(int)BaseUnit];
         }
 

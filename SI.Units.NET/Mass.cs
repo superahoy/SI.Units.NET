@@ -139,8 +139,6 @@ using System.Text.Json.Serialization;
         /// <inheritdoc/>
         public double BaseValue()
         {
-            if (Unit == BaseUnit) return Value;
-
             return Value * Factors[(int)Unit] / Factors[(int)BaseUnit];
         }
 
