@@ -89,5 +89,77 @@ namespace SI.Units.NET.UnitTests
             
             Assert.AreEqual(expected, parsed);
         }
+
+        [TestMethod]
+        public void SqrtTest()
+        {
+            var a = new Length(25, Length.Units.Kilometer);
+            var b = a.Sqrt();
+
+            Assert.AreEqual(5, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit);
+        }
+
+        [TestMethod]
+        public void CbrtTest()
+        {
+            var a = new Length(27, Length.Units.Kilometer);
+            var b = a.Cbrt();
+
+            Assert.AreEqual(3, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit);
+        }
+
+        [TestMethod]
+        public void Log2Test()
+        {
+            var a = new Length(16, Length.Units.Kilometer);
+            var b = a.Log2();
+
+            Assert.AreEqual(4, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit);
+        }
+
+        [TestMethod]
+        public void Log10Test()
+        {
+            var a = new Length(1000, Length.Units.Kilometer);
+            var b = a.Log10();
+
+            Assert.AreEqual(3, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit);
+        }
+
+        [TestMethod]
+        public void AbsTest()
+        {
+            var a = new Length(-100, Length.Units.Kilometer);
+            var b = a.Abs();
+
+            Assert.AreEqual(100, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit); 
+        }
+
+        [TestMethod]
+        public void RoundTest()
+        {
+            var a = new Length(100.2569, Length.Units.Kilometer);
+            var b = a.Round(1);
+
+            Assert.AreEqual(100.3, b.Value, EPS);
+            Assert.AreEqual(Length.Units.Kilometer, b.Unit); 
+        }
+
+        [TestMethod]
+        public void EqualsTest()
+        {
+            var a = new Length(1000, Length.Units.Meter);
+            var b = new Length(1, Length.Units.Kilometer);
+
+            Assert.AreEqual(a, b);
+
+            b = new Length(500, Length.Units.Meter);
+            Assert.AreNotEqual(a, b);
+        }
     }
 }

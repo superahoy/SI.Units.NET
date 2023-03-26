@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace SI.Units.NET
 {
+    /// <summary>
+    /// Represents Length Base Quantity type from Table 2. SI base units
+    /// </summary>
     public readonly struct Length : IQuantity<Length>
     {
         /// <summary> Base unit of measure </summary>
@@ -127,7 +130,7 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return HashCode.Combine(Value, Unit);
+            return BaseValue().GetHashCode();
         }
 
         /// <inheritdoc/>
