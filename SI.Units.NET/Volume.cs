@@ -22,13 +22,9 @@ namespace SI.Units.NET
             CubicDecimeter,
             CubicCentimeter,
             CubicMillimeter,
-            CubicMicrometer,
-            CubicNanometer,
             CubicDecameter,
             CubicHectometer,
             CubicKilometer,
-            CubicMegameter,
-            CubicGigameter,
             CubicInch,
             CubicFoot,
             CubicYard,
@@ -53,13 +49,9 @@ namespace SI.Units.NET
             Math.Pow(Prefixes.Deci.Factor,3),           // CubicDecimeter
             Math.Pow(Prefixes.Centi.Factor,3),          // CubicCentimeter
             Math.Pow(Prefixes.Milli.Factor,3),          // CubicMillimeter
-            Math.Pow(Prefixes.Micro.Factor,3),          // CubicMicrometer
-            Math.Pow(Prefixes.Nano.Factor,3),           // CubicNanometer
             Math.Pow(Prefixes.Deca.Factor,3),           // CubicDecameter
             Math.Pow(Prefixes.Hecto.Factor,3),          // CubicHectometer
             Math.Pow(Prefixes.Kilo.Factor,3),           // CubicKilometer
-            Math.Pow(Prefixes.Mega.Factor,3),           // CubicMegameter
-            Math.Pow(Prefixes.Giga.Factor,3),           // CubicGigameter
             CubicFoot2CubicMeter / 1728.0,              // CubicInch
             CubicFoot2CubicMeter,                       // CubicFoot
             CubicFoot2CubicMeter * 27.0,                // CubicYard
@@ -83,13 +75,9 @@ namespace SI.Units.NET
             Prefixes.Deci.Symbol    + BaseSymbol,
             Prefixes.Centi.Symbol   + BaseSymbol,
             Prefixes.Milli.Symbol   + BaseSymbol,
-            Prefixes.Micro.Symbol   + BaseSymbol,
-            Prefixes.Nano.Symbol    + BaseSymbol,
             Prefixes.Deca.Symbol    + BaseSymbol,
             Prefixes.Hecto.Symbol   + BaseSymbol,
             Prefixes.Kilo.Symbol    + BaseSymbol,
-            Prefixes.Mega.Symbol    + BaseSymbol,
-            Prefixes.Giga.Symbol    + BaseSymbol,
             "in³",      // CubicInch
             "ft³",      // CubicFoot,
             "yd³",      // CubicYard
