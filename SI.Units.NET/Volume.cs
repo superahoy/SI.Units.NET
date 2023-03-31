@@ -49,26 +49,26 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,                                            // CubicMeter
-            Prefixes.Deci.Factor  * Prefixes.Deci.Factor,   // CubicDecimeter
-            Prefixes.Centi.Factor * Prefixes.Centi.Factor,  // CubicCentimeter
-            Prefixes.Milli.Factor * Prefixes.Milli.Factor,  // CubicMillimeter
-            Prefixes.Micro.Factor * Prefixes.Micro.Factor,  // CubicMicrometer
-            Prefixes.Nano.Factor  * Prefixes.Nano.Factor,   // CubicNanometer
-            Prefixes.Deca.Factor  * Prefixes.Deca.Factor,   // CubicDecameter
-            Prefixes.Hecto.Factor * Prefixes.Hecto.Factor,  // CubicHectometer
-            Prefixes.Kilo.Factor  * Prefixes.Kilo.Factor,   // CubicKilometer
-            Prefixes.Mega.Factor  * Prefixes.Mega.Factor,   // CubicMegameter
-            Prefixes.Giga.Factor  * Prefixes.Giga.Factor,   // CubicGigameter
-            CubicFoot2CubicMeter / 1728.0,                  // CubicInch
-            CubicFoot2CubicMeter,                           // CubicFoot
-            CubicFoot2CubicMeter * 27.0,                    // CubicYard
-            CubicFoot2CubicMeter * 5280 * 5280 * 5280,      // CubicMile
-            1.0e-3,                                         // Liter
-            Gallon2CubicMeter,                              // Gallon
-            Gallon2CubicMeter / 4.0,                        // Quart
-            Gallon2CubicMeter / 8.0,                        // Pint
-            Gallon2CubicMeter / 128.0                       // Fluid Ounce
+            1.0,                                        // CubicMeter
+            Math.Pow(Prefixes.Deci.Factor,3),           // CubicDecimeter
+            Math.Pow(Prefixes.Centi.Factor,3),          // CubicCentimeter
+            Math.Pow(Prefixes.Milli.Factor,3),          // CubicMillimeter
+            Math.Pow(Prefixes.Micro.Factor,3),          // CubicMicrometer
+            Math.Pow(Prefixes.Nano.Factor,3),           // CubicNanometer
+            Math.Pow(Prefixes.Deca.Factor,3),           // CubicDecameter
+            Math.Pow(Prefixes.Hecto.Factor,3),          // CubicHectometer
+            Math.Pow(Prefixes.Kilo.Factor,3),           // CubicKilometer
+            Math.Pow(Prefixes.Mega.Factor,3),           // CubicMegameter
+            Math.Pow(Prefixes.Giga.Factor,3),           // CubicGigameter
+            CubicFoot2CubicMeter / 1728.0,              // CubicInch
+            CubicFoot2CubicMeter,                       // CubicFoot
+            CubicFoot2CubicMeter * 27.0,                // CubicYard
+            CubicFoot2CubicMeter * 5280 * 5280 * 5280,  // CubicMile
+            1.0e-3,                                     // Liter
+            Gallon2CubicMeter,                          // Gallon
+            Gallon2CubicMeter / 4.0,                    // Quart
+            Gallon2CubicMeter / 8.0,                    // Pint
+            Gallon2CubicMeter / 128.0                   // Fluid Ounce
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();

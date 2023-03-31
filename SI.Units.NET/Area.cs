@@ -38,28 +38,29 @@ namespace SI.Units.NET
         };
 
         private const double SqFt2SqM = Length.FOOT2METER * Length.FOOT2METER;
+
         /// <summary>
         /// Conversion factors from target unit to base unit.
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,                                            // SquareMeter
-            Prefixes.Deci.Factor  * Prefixes.Deci.Factor,   // SquareDecimeter
-            Prefixes.Centi.Factor * Prefixes.Centi.Factor,  // SquareCentimeter
-            Prefixes.Milli.Factor * Prefixes.Milli.Factor,  // SquareMillimeter
-            Prefixes.Micro.Factor * Prefixes.Micro.Factor,  // SquareMicrometer
-            Prefixes.Nano.Factor  * Prefixes.Nano.Factor,   // SquareNanometer
-            Prefixes.Deca.Factor  * Prefixes.Deca.Factor,   // SquareDecameter
-            Prefixes.Hecto.Factor * Prefixes.Hecto.Factor,  // SquareHectometer
-            Prefixes.Kilo.Factor  * Prefixes.Kilo.Factor,   // SquareKilometer
-            Prefixes.Mega.Factor  * Prefixes.Mega.Factor,   // SquareMegameter
-            Prefixes.Giga.Factor  * Prefixes.Giga.Factor,   // SquareGigameter
-            1.0e4,                      // Hectare,
-            SqFt2SqM / 144.0,           // Inch
-            SqFt2SqM,                   // Foot
-            SqFt2SqM * 9.0,             // Yard
-            SqFt2SqM * 5280.0 * 5280,   // Mile
-            SqFt2SqM * 43560            // Acre
+            1.0,                                // SquareMeter
+            Math.Pow(Prefixes.Deci.Factor,2),   // SquareDecimeter
+            Math.Pow(Prefixes.Centi.Factor,2),  // SquareCentimeter
+            Math.Pow(Prefixes.Milli.Factor,2),  // SquareMillimeter
+            Math.Pow(Prefixes.Micro.Factor,2),  // SquareMicrometer
+            Math.Pow(Prefixes.Nano.Factor,2),   // SquareNanometer
+            Math.Pow(Prefixes.Deca.Factor,2),   // SquareDecameter
+            Math.Pow(Prefixes.Hecto.Factor,2),  // SquareHectometer
+            Math.Pow(Prefixes.Kilo.Factor,2),   // SquareKilometer
+            Math.Pow(Prefixes.Mega.Factor,2),   // SquareMegameter
+            Math.Pow(Prefixes.Giga.Factor,2),   // SquareGigameter
+            1.0e4,                              // Hectare,
+            SqFt2SqM / 144.0,                   // SquareInch
+            SqFt2SqM,                           // SquareFoot
+            SqFt2SqM * 9.0,                     // SquareYard
+            SqFt2SqM * 5280.0 * 5280,           // SquareMile
+            SqFt2SqM * 43560                    // Acre
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
