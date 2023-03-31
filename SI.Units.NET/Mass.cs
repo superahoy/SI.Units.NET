@@ -1,9 +1,12 @@
-﻿using SI.Units.NET;
+﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-/// <summary>
-/// Represents Mass Base Quantity type from Table 2. SI base units
-/// </summary>
+
+namespace SI.Units.NET
+{
+    /// <summary>
+    /// Represents Mass Base Quantity type from Table 2. SI base units
+    /// </summary>
     public readonly struct Mass : IQuantity<Mass>
     {
         /// <summary> Base unit of measure </summary>
@@ -11,11 +14,15 @@ using System.Text.Json.Serialization;
 
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "g";
+        
+        /// <summary> US Customary units definition, Pound to Kilogram </summary>
+        internal const double LB2KG = 0.45359237;
 
         /// <summary> Supported units of measure for Mass Quantity type </summary>
         public enum Units
         {
             Kilogram,
+            Gram,
             Decigram,
             Centigram,
             Milligram,
@@ -25,48 +32,59 @@ using System.Text.Json.Serialization;
             Femtogram,
             Decagram,
             Hectogram,
-            Gram,
             Megagram,
             Gigagram,
             Teragram,
             Petagram,
+            [Description("Metric tonne, 1000 kg")]
             Tonne,
+            Kilotonne,
+            Megatonne,
+            Gigatonne,
+            [Description("1 Ounce = 1/16 lb")]
             Ounce,
             Pound,
+            [Description("2000 pounds (short ton)")]
             Ton,
+            [Description("2240 pounds (long ton)")]
+            LongTon,
             Slug,
+            [Description("1 Stone = 14 lb")]
             Stone
         };
+
+        private const double Offset = 1e-3;
 
         /// <summary>
         /// Conversion factors from target unit to base unit.
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,
-            Prefixes.Deci.Factor,
-            Prefixes.Centi.Factor,
-            Prefixes.Milli.Factor,
-            Prefixes.Micro.Factor,
-            Prefixes.Nano.Factor,
-            Prefixes.Pico.Factor,
-            Prefixes.Femto.Factor,
-            Prefixes.Deca.Factor,
-            Prefixes.Hecto.Factor,
-            Prefixes.Kilo.Factor,
-            Prefixes.Mega.Factor,
-            Prefixes.Giga.Factor,
-            Prefixes.Tera.Factor,
-            Prefixes.Peta.Factor,
-            0.3048 / 12.0,
-            0.3048,
-            0.3048 * 3.0,
-            0.3048 * 5280.0,
-            1852.0,
-            0.3048 * 0.66,
-            0.3048 * 66,
-            0.3048 * 16.5,
-            0.3048 * 660
+            1.0,                            // Kilogram
+            Offset,                         // Gram
+            Offset * Prefixes.Deci.Factor,  // Decigram
+            Offset * Prefixes.Centi.Factor, // Centigram
+            Offset * Prefixes.Milli.Factor, // Milligram
+            Offset * Prefixes.Micro.Factor, // Microgram
+            Offset * Prefixes.Nano.Factor,  // Nanogram
+            Offset * Prefixes.Pico.Factor,  // Picogram
+            Offset * Prefixes.Femto.Factor, // Femtogram
+            Offset * Prefixes.Deca.Factor,  // Decagram
+            Offset * Prefixes.Hecto.Factor, // Hectogram
+            Offset * Prefixes.Mega.Factor,  // Megagram
+            Offset * Prefixes.Giga.Factor,  // Gigagram
+            Offset * Prefixes.Tera.Factor,  // Teragram
+            Offset * Prefixes.Peta.Factor,  // Petagram
+            1e3,                            // Tonne,
+            1e6,                            // Kilotonne
+            1e9,                            // Megatonne
+            1e12,                           // Gigatonne
+            LB2KG / 16,                     // Ounce
+            LB2KG,                          // Pound
+            LB2KG * 2000,                   // Ton
+            LB2KG * 2240,                   // LongTon
+            LB2KG * 32.174048556,           // Slug
+            LB2KG * 14,                     // Stone
         };
 
         /// <summary>
@@ -75,30 +93,31 @@ using System.Text.Json.Serialization;
         /// </summary>
         private static readonly string[] Symbols =
         {
+            Prefixes.Kilo.Symbol    + BaseSymbol,
             BaseSymbol,
-            Prefixes.Deci.Symbol + BaseSymbol,
-            Prefixes.Centi.Symbol + BaseSymbol,
-            Prefixes.Milli.Symbol + BaseSymbol,
-            Prefixes.Micro.Symbol + BaseSymbol,
-            Prefixes.Nano.Symbol + BaseSymbol,
-            Prefixes.Pico.Symbol + BaseSymbol,
-            Prefixes.Femto.Symbol + BaseSymbol,
-            Prefixes.Deca.Symbol + BaseSymbol,
-            Prefixes.Hecto.Symbol + BaseSymbol,
-            Prefixes.Kilo.Symbol + BaseSymbol,
-            Prefixes.Mega.Symbol + BaseSymbol,
-            Prefixes.Giga.Symbol + BaseSymbol,
-            Prefixes.Tera.Symbol + BaseSymbol,
-            Prefixes.Peta.Symbol + BaseSymbol,
-            "in",
-            "ft",
-            "yd",
-            "mi",
-            "NM",
-            "lnk",
-            "ch",
-            "rod",
-            "fur"
+            Prefixes.Deci.Symbol    + BaseSymbol,
+            Prefixes.Centi.Symbol   + BaseSymbol,
+            Prefixes.Milli.Symbol   + BaseSymbol,
+            Prefixes.Micro.Symbol   + BaseSymbol,
+            Prefixes.Nano.Symbol    + BaseSymbol,
+            Prefixes.Pico.Symbol    + BaseSymbol,
+            Prefixes.Femto.Symbol   + BaseSymbol,
+            Prefixes.Deca.Symbol    + BaseSymbol,
+            Prefixes.Hecto.Symbol   + BaseSymbol,
+            Prefixes.Mega.Symbol    + BaseSymbol,
+            Prefixes.Giga.Symbol    + BaseSymbol,
+            Prefixes.Tera.Symbol    + BaseSymbol,
+            Prefixes.Peta.Symbol    + BaseSymbol,
+            "t",                                    // Tonne,
+            Prefixes.Kilo.Symbol + "t",             // Kilotonne
+            Prefixes.Mega.Symbol + "t",             // Megatonne
+            Prefixes.Giga.Symbol + "t",             // Gigatonne
+            "oz",                                   // Ounce
+            "lb",                                   // Pound
+            "tn",                                   // Ton
+            "LT",                                   // LongTon
+            "slug",                                 // Slug
+            "st",                                   // Stone
         };
 
         /// <summary>
@@ -413,6 +432,12 @@ using System.Text.Json.Serialization;
         {
             return a.BaseValue() <= b.BaseValue();
         }
+        
+        public static Mass operator%(Mass a, double b)
+        {
+            return new Mass(a.Value % b, a.Unit);
+        }
 
         #endregion
     }
+}

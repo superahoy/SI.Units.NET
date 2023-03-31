@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace SI.Units.NET
@@ -32,47 +33,67 @@ namespace SI.Units.NET
             Gigameter,
             Terameter,
             Petameter,
+            [Description("1 Inch = 1/12 ft")]
             Inch,
+            [Description("1 Foot = 0.3048 m")]
             Foot,
+            [Description("1 Yard = 3 ft")]
             Yard,
+            [Description("1 Mile = 5280 ft")]
             Mile,
+            [Description("1 Nautical Mile = 1852 m")]
             NauticalMile,
+            [Description("1 Link = 1/100 chain = 0.66 ft")]
             Link,
+            [Description("1 Chain = 66 ft")]
             Chain,
+            [Description("1 Rod = 16.5 ft")]
             Rod,
+            [Description("1 Furlong = 660 ft")]
             Furlong,
+            [Description("1 Fathom = 6 ft")]
+            Fathom,
+            [Description("1 Astronomical Unit = 149,597,870,700 m")]
+            AstronomicalUnit,
         };
+
+        /// <summary> US Customary units definition, foot to meter </summary>
+        internal const double FOOT2METER = 0.3048;
 
         /// <summary>
         /// Conversion factors from target unit to base unit.
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,
-            Prefixes.Deci.Factor,
-            Prefixes.Centi.Factor,
-            Prefixes.Milli.Factor,
-            Prefixes.Micro.Factor,
-            Prefixes.Nano.Factor,
-            Prefixes.Pico.Factor,
-            Prefixes.Femto.Factor,
-            Prefixes.Deca.Factor,
-            Prefixes.Hecto.Factor,
-            Prefixes.Kilo.Factor,
-            Prefixes.Mega.Factor,
-            Prefixes.Giga.Factor,
-            Prefixes.Tera.Factor,
-            Prefixes.Peta.Factor,
-            0.3048 / 12.0,
-            0.3048,
-            0.3048 * 3.0,
-            0.3048 * 5280.0,
-            1852.0,
-            0.3048 * 0.66,
-            0.3048 * 66,
-            0.3048 * 16.5,
-            0.3048 * 660
+            1.0,                    // Meter
+            Prefixes.Deci.Factor,   // Decimeter
+            Prefixes.Centi.Factor,  // Centimeter
+            Prefixes.Milli.Factor,  // Millimeter
+            Prefixes.Micro.Factor,  // Micrometer
+            Prefixes.Nano.Factor,   // Nanometer
+            Prefixes.Pico.Factor,   // Picometer
+            Prefixes.Femto.Factor,  // Femtometer
+            Prefixes.Deca.Factor,   // Decameter
+            Prefixes.Hecto.Factor,  // Hectometer
+            Prefixes.Kilo.Factor,   // Kilometer
+            Prefixes.Mega.Factor,   // Megameter
+            Prefixes.Giga.Factor,   // Gigameter
+            Prefixes.Tera.Factor,   // Terameter
+            Prefixes.Peta.Factor,   // Petameter
+            FOOT2METER / 12.0,      // Inch
+            FOOT2METER,             // Foot
+            FOOT2METER * 3.0,       // Yard
+            FOOT2METER * 5280.0,    // Mile
+            1852.0,                 // NauticalMile
+            FOOT2METER * 0.66,      // Link
+            FOOT2METER * 66,        // Chain
+            FOOT2METER * 16.5,      // Rod
+            FOOT2METER * 660,       // Furlong
+            FOOT2METER * 6.0,       // Fathom
+            149597870700.0          // AstronomicalUnit
         };
+
+        private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
 
         /// <summary>
         /// Unit of measure symbols for each Unit. Order of
@@ -81,29 +102,31 @@ namespace SI.Units.NET
         private static readonly string[] Symbols =
         {
             BaseSymbol,
-            Prefixes.Deci.Symbol + BaseSymbol,
-            Prefixes.Centi.Symbol + BaseSymbol,
-            Prefixes.Milli.Symbol + BaseSymbol,
-            Prefixes.Micro.Symbol + BaseSymbol,
-            Prefixes.Nano.Symbol + BaseSymbol,
-            Prefixes.Pico.Symbol + BaseSymbol,
-            Prefixes.Femto.Symbol + BaseSymbol,
-            Prefixes.Deca.Symbol + BaseSymbol,
-            Prefixes.Hecto.Symbol + BaseSymbol,
-            Prefixes.Kilo.Symbol + BaseSymbol,
-            Prefixes.Mega.Symbol + BaseSymbol,
-            Prefixes.Giga.Symbol + BaseSymbol,
-            Prefixes.Tera.Symbol + BaseSymbol,
-            Prefixes.Peta.Symbol + BaseSymbol,
-            "in",
-            "ft",
-            "yd",
-            "mi",
-            "NM",
-            "lnk",
-            "ch",
-            "rod",
-            "fur"
+            Prefixes.Deci.Symbol    + BaseSymbol,
+            Prefixes.Centi.Symbol   + BaseSymbol,
+            Prefixes.Milli.Symbol   + BaseSymbol,
+            Prefixes.Micro.Symbol   + BaseSymbol,
+            Prefixes.Nano.Symbol    + BaseSymbol,
+            Prefixes.Pico.Symbol    + BaseSymbol,
+            Prefixes.Femto.Symbol   + BaseSymbol,
+            Prefixes.Deca.Symbol    + BaseSymbol,
+            Prefixes.Hecto.Symbol   + BaseSymbol,
+            Prefixes.Kilo.Symbol    + BaseSymbol,
+            Prefixes.Mega.Symbol    + BaseSymbol,
+            Prefixes.Giga.Symbol    + BaseSymbol,
+            Prefixes.Tera.Symbol    + BaseSymbol,
+            Prefixes.Peta.Symbol    + BaseSymbol,
+            "in",       // Inch
+            "ft",       // Foot
+            "yd",       // Yard
+            "mi",       // Mile
+            "NM",       // Nautical Mile
+            "lnk",      // Link
+            "ch",       // Chain
+            "rod",      // Rod
+            "fur",      // Furlong
+            "ftm",      // Fathom
+            "au"        // AstronomicalUnit
         };
 
         /// <summary>
@@ -144,7 +167,7 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public double BaseValue()
         {
-            return Value * Factors[(int)Unit] / Factors[(int)BaseUnit];
+            return Value * Factors[(int)Unit] * Inverse[(int)BaseUnit];
         }
 
         /// <inheritdoc/>
@@ -171,7 +194,7 @@ namespace SI.Units.NET
         /// <returns>Quantity converted to target unit of measure</returns>
         public Length As(Units target)
         {
-            return new Length(Value * Factors[(int)Unit] / Factors[(int)target], target);
+            return new Length(Value * Factors[(int)Unit] * Inverse[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -417,6 +440,11 @@ namespace SI.Units.NET
         public static bool operator<=(Length a, Length b)
         {
             return a.BaseValue() <= b.BaseValue();
+        }
+
+        public static Length operator%(Length a, double b)
+        {
+            return new Length(a.Value % b, a.Unit);
         }
 
         #endregion

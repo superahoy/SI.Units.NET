@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace SI.Units.NET
@@ -32,8 +33,11 @@ namespace SI.Units.NET
             Gigasecond,
             Terasecond,
             Petasecond,
+            [Description("1 Minute = 60 s")]
             Minute,
+            [Description("1 Hour = 60 min = 3600 s")]
             Hour,
+            [Description("1 Day = 24 hr = 86,400 s")]
             Day
         };
 
@@ -42,25 +46,27 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,
-            Prefixes.Deci.Factor,
-            Prefixes.Centi.Factor,
-            Prefixes.Milli.Factor,
-            Prefixes.Micro.Factor,
-            Prefixes.Nano.Factor,
-            Prefixes.Pico.Factor,
-            Prefixes.Femto.Factor,
-            Prefixes.Deca.Factor,
-            Prefixes.Hecto.Factor,
-            Prefixes.Kilo.Factor,
-            Prefixes.Mega.Factor,
-            Prefixes.Giga.Factor,
-            Prefixes.Tera.Factor,
-            Prefixes.Peta.Factor,
-            60.0,
-            3600.0,
-            86400.0
+            1.0,                    // Second
+            Prefixes.Deci.Factor,   // Decisecond
+            Prefixes.Centi.Factor,  // Centisecond
+            Prefixes.Milli.Factor,  // Millisecond
+            Prefixes.Micro.Factor,  // Microsecond
+            Prefixes.Nano.Factor,   // Nanosecond
+            Prefixes.Pico.Factor,   // Picosecond
+            Prefixes.Femto.Factor,  // Femtosecond
+            Prefixes.Deca.Factor,   // Decasecond
+            Prefixes.Hecto.Factor,  // Hectosecond
+            Prefixes.Kilo.Factor,   // Kilosecond
+            Prefixes.Mega.Factor,   // Megasecond
+            Prefixes.Giga.Factor,   // Gigasecond
+            Prefixes.Tera.Factor,   // Terasecond
+            Prefixes.Peta.Factor,   // Petasecond
+            60.0,                   // Minute
+            3600.0,                 // Hour
+            86400.0                 // Day
         };
+
+        private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
 
         /// <summary>
         /// Unit of measure symbols for each Unit. Order of
@@ -126,7 +132,7 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public double BaseValue()
         {
-            return Value * Factors[(int)Unit] / Factors[(int)BaseUnit];
+            return Value * Factors[(int)Unit] * Inverse[(int)BaseUnit];
         }
 
         /// <inheritdoc/>
@@ -153,7 +159,7 @@ namespace SI.Units.NET
         /// <returns>Quantity converted to target unit of measure</returns>
         public Time As(Units target)
         {
-            return new Time(Value * Factors[(int)Unit] / Factors[(int)target], target);
+            return new Time(Value * Factors[(int)Unit] * Inverse[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -399,6 +405,11 @@ namespace SI.Units.NET
         public static bool operator<=(Time a, Time b)
         {
             return a.BaseValue() <= b.BaseValue();
+        }
+
+        public static Time operator%(Time a, double b)
+        {
+            return new Time(a.Value % b, a.Unit);
         }
 
         #endregion

@@ -20,6 +20,7 @@ namespace SI.Units.NET
                                     IComparisonOperators<T,T,bool>,
                                     IUnaryNegationOperators<T, T>,
                                     IMultiplyOperators<T, double, T>,
+                                    IModulusOperators<T, double, T>,
                                     IComparable<T> where T : struct, IQuantity<T>
     {
         /// <summary>
