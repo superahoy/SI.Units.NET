@@ -53,6 +53,7 @@ namespace SI.Units.NET
             Stone
         };
 
+        /// <summary> Base unit is Kilo, need to offset prefix factors </summary>
         private const double Offset = 1e-3;
 
         /// <summary>
