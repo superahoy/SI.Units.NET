@@ -1,37 +1,45 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace SI.Units.NET
 {
     /// <summary>
-    /// Represents LuminousIntensity Base Quantity type from Table 2. SI base units
+    /// Represents Pressure Base Quantity type from Table 2. SI base units
     /// </summary>
-    public readonly struct LuminousIntensity : IQuantity<LuminousIntensity>
+    public readonly struct Pressure : IQuantity<Pressure>
     {
         /// <summary> Base unit of measure </summary>
-        public const Units BaseUnit = Units.Candela;
+        public const Units BaseUnit = Units.Pascal;
 
         /// <summary> Base symbol </summary>
-        public const string BaseSymbol = "cd";
+        public const string BaseSymbol = "Pa";
 
-        /// <summary> Supported units of measure for LuminousIntensity Quantity type </summary>
+        /// <summary> Supported units of measure for Pressure Quantity type </summary>
         public enum Units
         {
-            Candela,
-            Decicandela,
-            Centicandela,
-            Millicandela,
-            Microcandela,
-            Nanocandela,
-            Picocandela,
-            Femtocandela,
-            Decacandela,
-            Hectocandela,
-            Kilocandela,
-            Megacandela,
-            Gigacandela,
-            Teracandela,
-            Petacandela
+            Pascal,
+            Decipascal,
+            Centipascal,
+            Millipascal,
+            Micropascal,
+            Nanopascal,
+            Picopascal,
+            Femtopascal,
+            Decapascal,
+            Hectopascal,
+            Kilopascal,
+            Megapascal,
+            Gigapascal,
+            Terapascal,
+            Petapascal,
+            Bar,
+            Millibar,
+            InchesMercury,
+            MillimetersMercury,
+            PoundsPerSquareInch,
+            [Description("Average air pressure at sea level at a temperature of 15 degrees Celsius")]
+            Atmosphere 
         };
 
         /// <summary>
@@ -39,21 +47,27 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,                    // Candela
-            Prefixes.Deci.Factor,   // Decicandela
-            Prefixes.Centi.Factor,  // Centicandela
-            Prefixes.Milli.Factor,  // Millicandela
-            Prefixes.Micro.Factor,  // Microcandela
-            Prefixes.Nano.Factor,   // Nanocandela
-            Prefixes.Pico.Factor,   // Picocandela
-            Prefixes.Femto.Factor,  // Femtocandela
-            Prefixes.Deca.Factor,   // Decacandela
-            Prefixes.Hecto.Factor,  // Hectocandela
-            Prefixes.Kilo.Factor,   // Kilocandela
-            Prefixes.Mega.Factor,   // Megacandela
-            Prefixes.Giga.Factor,   // Gigacandela
-            Prefixes.Tera.Factor,   // Teracandela
-            Prefixes.Peta.Factor,   // Petacandela
+            1.0,                    // Pascal
+            Prefixes.Deci.Factor,   // Decipascal
+            Prefixes.Centi.Factor,  // Centipascal
+            Prefixes.Milli.Factor,  // Millipascal
+            Prefixes.Micro.Factor,  // Micropascal
+            Prefixes.Nano.Factor,   // Nanopascal
+            Prefixes.Pico.Factor,   // Picopascal
+            Prefixes.Femto.Factor,  // Femtopascal
+            Prefixes.Deca.Factor,   // Decapascal
+            Prefixes.Hecto.Factor,  // Hectopascal
+            Prefixes.Kilo.Factor,   // Kilopascal
+            Prefixes.Mega.Factor,   // Megapascal
+            Prefixes.Giga.Factor,   // Gigapascal
+            Prefixes.Tera.Factor,   // Terapascal
+            Prefixes.Peta.Factor,   // Petapascal
+            100000,                 // Bar
+            100,                    // Millibar
+            3386.38866666667,       // InchesMercury
+            133.322387415,          // MillimetersMercury
+            6894.7572931783,        // PoundsPerSquareInch
+            101325.0                // Atmosphere
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -78,16 +92,22 @@ namespace SI.Units.NET
             Prefixes.Mega.Symbol    + BaseSymbol,
             Prefixes.Giga.Symbol    + BaseSymbol,
             Prefixes.Tera.Symbol    + BaseSymbol,
-            Prefixes.Peta.Symbol    + BaseSymbol
+            Prefixes.Peta.Symbol    + BaseSymbol,
+            "bar",  // Bar
+            "mbar", // Millibar
+            "inHg", // InchesMercury
+            "mmHg", // MillimetersMercury
+            "psi",  // PoundsPerSquareInch
+            "atm"   // Atmosphere
         };
 
         /// <summary>
-        /// Create new LuminousIntensity object
+        /// Create new Pressure object
         /// </summary>
-        /// <param name="value">LuminousIntensity value (amount)</param>
+        /// <param name="value">Pressure value (amount)</param>
         /// <param name="unit">Unit of measure value is in</param>
         [JsonConstructor]
-        public LuminousIntensity(double value, Units unit)
+        public Pressure(double value, Units unit)
         {
             Value   = value; 
             Unit    = unit;
@@ -111,9 +131,9 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if ((obj is LuminousIntensity) == false) { return false; }
+            if ((obj is Pressure) == false) { return false; }
             
-            return Equals((LuminousIntensity)obj);
+            return Equals((Pressure)obj);
         }
 
         /// <inheritdoc/>
@@ -123,13 +143,13 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity ToBase()
+        public Pressure ToBase()
         {
             return As(BaseUnit);
         }
 
         /// <inheritdoc/>
-        public bool Equals(LuminousIntensity other)
+        public bool Equals(Pressure other)
         {
             if (Math.Abs(BaseValue() - other.BaseValue()) > 1.0e-14)
             {
@@ -144,9 +164,9 @@ namespace SI.Units.NET
         /// </summary>
         /// <param name="target">Target unit of measure</param>
         /// <returns>Quantity converted to target unit of measure</returns>
-        public LuminousIntensity As(Units target)
+        public Pressure As(Units target)
         {
-            return new LuminousIntensity(Value * Factors[(int)Unit] * Inverse[(int)target], target);
+            return new Pressure(Value * Factors[(int)Unit] * Inverse[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -156,7 +176,7 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public int CompareTo(LuminousIntensity other)
+        public int CompareTo(Pressure other)
         {
             return BaseValue().CompareTo(other.BaseValue());
         }
@@ -174,75 +194,75 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Sqrt()
+        public Pressure Sqrt()
         {
-            return new LuminousIntensity(Math.Sqrt(Value), Unit);
+            return new Pressure(Math.Sqrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Cbrt()
+        public Pressure Cbrt()
         {
-            return new LuminousIntensity(Math.Cbrt(Value), Unit);
+            return new Pressure(Math.Cbrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log()
+        public Pressure Log()
         {
-            return new LuminousIntensity(Math.Log(Value), Unit);
+            return new Pressure(Math.Log(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log2()
+        public Pressure Log2()
         {
-            return new LuminousIntensity(Math.Log2(Value), Unit);
+            return new Pressure(Math.Log2(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log10()
+        public Pressure Log10()
         {
-            return new LuminousIntensity(Math.Log10(Value), Unit);
+            return new Pressure(Math.Log10(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Pow(double exp)
+        public Pressure Pow(double exp)
         {
-            return new LuminousIntensity(Math.Pow(Value, exp), Unit);
+            return new Pressure(Math.Pow(Value, exp), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Abs()
+        public Pressure Abs()
         {
-            return new LuminousIntensity(Math.Abs(Value), Unit);
+            return new Pressure(Math.Abs(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Floor()
+        public Pressure Floor()
         {
-            return new LuminousIntensity(Math.Floor(Value), Unit);
+            return new Pressure(Math.Floor(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Ceiling()
+        public Pressure Ceiling()
         {
-            return new LuminousIntensity(Math.Ceiling(Value), Unit);
+            return new Pressure(Math.Ceiling(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Truncate()
+        public Pressure Truncate()
         {
-            return new LuminousIntensity(Math.Truncate(Value), Unit);
+            return new Pressure(Math.Truncate(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Round()
+        public Pressure Round()
         {
-            return new LuminousIntensity(Math.Round(Value), Unit);
+            return new Pressure(Math.Round(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Round(int digits)
+        public Pressure Round(int digits)
         {
-            return new LuminousIntensity(Math.Round(Value, digits), Unit);
+            return new Pressure(Math.Round(Value, digits), Unit);
         }
 
         /// <inheritdoc/>
@@ -276,18 +296,18 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public static LuminousIntensity Parse(string s, IFormatProvider? provider)
+        public static Pressure Parse(string s, IFormatProvider? provider)
         {
             var tokens  = s.Split(' ', 2);
 
             var value   = double.Parse(tokens[0]);
             var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
 
-            return new LuminousIntensity(value, unit);
+            return new Pressure(value, unit);
         }
 
         /// <inheritdoc/>
-        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out LuminousIntensity result)
+        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Pressure result)
         {
             if (string.IsNullOrEmpty(s))
             {
@@ -302,101 +322,101 @@ namespace SI.Units.NET
             }
             catch
             {
-                result = default(LuminousIntensity);
+                result = default(Pressure);
                 return false;
             }
         }
 
         #region OperatorOverloading
 
-        public static LuminousIntensity operator++(LuminousIntensity value)
+        public static Pressure operator++(Pressure value)
         {
-            return new LuminousIntensity(value.Value + 1, value.Unit);
+            return new Pressure(value.Value + 1, value.Unit);
         }
 
-        public static LuminousIntensity operator--(LuminousIntensity value)
+        public static Pressure operator--(Pressure value)
         {
-            return new LuminousIntensity(value.Value - 1, value.Unit);
+            return new Pressure(value.Value - 1, value.Unit);
         }
 
-        public static LuminousIntensity operator/(LuminousIntensity value, double scalar)
+        public static Pressure operator/(Pressure value, double scalar)
         {
-            return new LuminousIntensity(value.Value / scalar, value.Unit);
+            return new Pressure(value.Value / scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator*(LuminousIntensity value, double scalar)
+        public static Pressure operator*(Pressure value, double scalar)
         {
-            return new LuminousIntensity(value.Value * scalar, value.Unit);
+            return new Pressure(value.Value * scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator*(double scalar, LuminousIntensity value)
+        public static Pressure operator*(double scalar, Pressure value)
         {
-            return new LuminousIntensity(value.Value * scalar, value.Unit);
+            return new Pressure(value.Value * scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator-(LuminousIntensity a)
+        public static Pressure operator-(Pressure a)
         {
-            return new LuminousIntensity(-a.Value, a.Unit);
+            return new Pressure(-a.Value, a.Unit);
         }
 
-        public static LuminousIntensity operator-(LuminousIntensity a, LuminousIntensity b)
-        {
-            if (a.Unit == b.Unit)
-            {
-                return new LuminousIntensity(a.Value - b.Value, a.Unit);
-            }
-
-            return new LuminousIntensity(a.BaseValue() - b.BaseValue(), BaseUnit);
-        }
-
-        public static LuminousIntensity operator+(LuminousIntensity a, LuminousIntensity b)
+        public static Pressure operator-(Pressure a, Pressure b)
         {
             if (a.Unit == b.Unit)
             {
-                return new LuminousIntensity(a.Value + b.Value, a.Unit);
+                return new Pressure(a.Value - b.Value, a.Unit);
             }
 
-            return new LuminousIntensity(a.BaseValue() + b.BaseValue(), BaseUnit);
+            return new Pressure(a.BaseValue() - b.BaseValue(), BaseUnit);
         }
 
-        public static double operator/(LuminousIntensity a, LuminousIntensity b)
+        public static Pressure operator+(Pressure a, Pressure b)
+        {
+            if (a.Unit == b.Unit)
+            {
+                return new Pressure(a.Value + b.Value, a.Unit);
+            }
+
+            return new Pressure(a.BaseValue() + b.BaseValue(), BaseUnit);
+        }
+
+        public static double operator/(Pressure a, Pressure b)
         {
             return a.BaseValue() / b.BaseValue();
         }
 
-        public static bool operator==(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator==(Pressure a, Pressure b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator!=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator!=(Pressure a, Pressure b)
         {
             return !a.Equals(b);
         }
 
-        public static bool operator>(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator>(Pressure a, Pressure b)
         {
             return a.BaseValue() > b.BaseValue();
         }
 
-        public static bool operator<(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator<(Pressure a, Pressure b)
         {
             return a.BaseValue() < b.BaseValue();
         }
 
-        public static bool operator>=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator>=(Pressure a, Pressure b)
         {
             return a.BaseValue() >= b.BaseValue();
         }
 
-        public static bool operator<=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator<=(Pressure a, Pressure b)
         {
             return a.BaseValue() <= b.BaseValue();
         }
 
-        public static LuminousIntensity operator%(LuminousIntensity a, double b)
+        public static Pressure operator%(Pressure a, double b)
         {
-            return new LuminousIntensity(a.Value % b, a.Unit);
+            return new Pressure(a.Value % b, a.Unit);
         }
 
         #endregion

@@ -4,34 +4,34 @@ using System.Text.Json.Serialization;
 namespace SI.Units.NET
 {
     /// <summary>
-    /// Represents LuminousIntensity Base Quantity type from Table 2. SI base units
+    /// Represents Energy Base Quantity type from Table 2. SI base units
     /// </summary>
-    public readonly struct LuminousIntensity : IQuantity<LuminousIntensity>
+    public readonly struct Energy : IQuantity<Energy>
     {
         /// <summary> Base unit of measure </summary>
-        public const Units BaseUnit = Units.Candela;
+        public const Units BaseUnit = Units.Joule;
 
         /// <summary> Base symbol </summary>
-        public const string BaseSymbol = "cd";
+        public const string BaseSymbol = "J";
 
-        /// <summary> Supported units of measure for LuminousIntensity Quantity type </summary>
+        /// <summary> Supported units of measure for Energy Quantity type </summary>
         public enum Units
         {
-            Candela,
-            Decicandela,
-            Centicandela,
-            Millicandela,
-            Microcandela,
-            Nanocandela,
-            Picocandela,
-            Femtocandela,
-            Decacandela,
-            Hectocandela,
-            Kilocandela,
-            Megacandela,
-            Gigacandela,
-            Teracandela,
-            Petacandela
+            Joule,
+            Decijoule,
+            Centijoule,
+            Millijoule,
+            Microjoule,
+            Nanojoule,
+            Picojoule,
+            Femtojoule,
+            Decajoule,
+            Hectojoule,
+            Kilojoule,
+            Megajoule,
+            Gigajoule,
+            Terajoule,
+            Petajoule
         };
 
         /// <summary>
@@ -39,21 +39,21 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,                    // Candela
-            Prefixes.Deci.Factor,   // Decicandela
-            Prefixes.Centi.Factor,  // Centicandela
-            Prefixes.Milli.Factor,  // Millicandela
-            Prefixes.Micro.Factor,  // Microcandela
-            Prefixes.Nano.Factor,   // Nanocandela
-            Prefixes.Pico.Factor,   // Picocandela
-            Prefixes.Femto.Factor,  // Femtocandela
-            Prefixes.Deca.Factor,   // Decacandela
-            Prefixes.Hecto.Factor,  // Hectocandela
-            Prefixes.Kilo.Factor,   // Kilocandela
-            Prefixes.Mega.Factor,   // Megacandela
-            Prefixes.Giga.Factor,   // Gigacandela
-            Prefixes.Tera.Factor,   // Teracandela
-            Prefixes.Peta.Factor,   // Petacandela
+            1.0,                    // Joule
+            Prefixes.Deci.Factor,   // Decijoule
+            Prefixes.Centi.Factor,  // Centijoule
+            Prefixes.Milli.Factor,  // Millijoule
+            Prefixes.Micro.Factor,  // Microjoule
+            Prefixes.Nano.Factor,   // Nanojoule
+            Prefixes.Pico.Factor,   // Picojoule
+            Prefixes.Femto.Factor,  // Femtojoule
+            Prefixes.Deca.Factor,   // Decajoule
+            Prefixes.Hecto.Factor,  // Hectojoule
+            Prefixes.Kilo.Factor,   // Kilojoule
+            Prefixes.Mega.Factor,   // Megajoule
+            Prefixes.Giga.Factor,   // Gigajoule
+            Prefixes.Tera.Factor,   // Terajoule
+            Prefixes.Peta.Factor,   // Petajoule
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -82,12 +82,12 @@ namespace SI.Units.NET
         };
 
         /// <summary>
-        /// Create new LuminousIntensity object
+        /// Create new Energy object
         /// </summary>
-        /// <param name="value">LuminousIntensity value (amount)</param>
+        /// <param name="value">Energy value (amount)</param>
         /// <param name="unit">Unit of measure value is in</param>
         [JsonConstructor]
-        public LuminousIntensity(double value, Units unit)
+        public Energy(double value, Units unit)
         {
             Value   = value; 
             Unit    = unit;
@@ -111,9 +111,9 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if ((obj is LuminousIntensity) == false) { return false; }
+            if ((obj is Energy) == false) { return false; }
             
-            return Equals((LuminousIntensity)obj);
+            return Equals((Energy)obj);
         }
 
         /// <inheritdoc/>
@@ -123,13 +123,13 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity ToBase()
+        public Energy ToBase()
         {
             return As(BaseUnit);
         }
 
         /// <inheritdoc/>
-        public bool Equals(LuminousIntensity other)
+        public bool Equals(Energy other)
         {
             if (Math.Abs(BaseValue() - other.BaseValue()) > 1.0e-14)
             {
@@ -144,9 +144,9 @@ namespace SI.Units.NET
         /// </summary>
         /// <param name="target">Target unit of measure</param>
         /// <returns>Quantity converted to target unit of measure</returns>
-        public LuminousIntensity As(Units target)
+        public Energy As(Units target)
         {
-            return new LuminousIntensity(Value * Factors[(int)Unit] * Inverse[(int)target], target);
+            return new Energy(Value * Factors[(int)Unit] * Inverse[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -156,7 +156,7 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public int CompareTo(LuminousIntensity other)
+        public int CompareTo(Energy other)
         {
             return BaseValue().CompareTo(other.BaseValue());
         }
@@ -174,75 +174,75 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Sqrt()
+        public Energy Sqrt()
         {
-            return new LuminousIntensity(Math.Sqrt(Value), Unit);
+            return new Energy(Math.Sqrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Cbrt()
+        public Energy Cbrt()
         {
-            return new LuminousIntensity(Math.Cbrt(Value), Unit);
+            return new Energy(Math.Cbrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log()
+        public Energy Log()
         {
-            return new LuminousIntensity(Math.Log(Value), Unit);
+            return new Energy(Math.Log(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log2()
+        public Energy Log2()
         {
-            return new LuminousIntensity(Math.Log2(Value), Unit);
+            return new Energy(Math.Log2(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Log10()
+        public Energy Log10()
         {
-            return new LuminousIntensity(Math.Log10(Value), Unit);
+            return new Energy(Math.Log10(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Pow(double exp)
+        public Energy Pow(double exp)
         {
-            return new LuminousIntensity(Math.Pow(Value, exp), Unit);
+            return new Energy(Math.Pow(Value, exp), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Abs()
+        public Energy Abs()
         {
-            return new LuminousIntensity(Math.Abs(Value), Unit);
+            return new Energy(Math.Abs(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Floor()
+        public Energy Floor()
         {
-            return new LuminousIntensity(Math.Floor(Value), Unit);
+            return new Energy(Math.Floor(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Ceiling()
+        public Energy Ceiling()
         {
-            return new LuminousIntensity(Math.Ceiling(Value), Unit);
+            return new Energy(Math.Ceiling(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Truncate()
+        public Energy Truncate()
         {
-            return new LuminousIntensity(Math.Truncate(Value), Unit);
+            return new Energy(Math.Truncate(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Round()
+        public Energy Round()
         {
-            return new LuminousIntensity(Math.Round(Value), Unit);
+            return new Energy(Math.Round(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public LuminousIntensity Round(int digits)
+        public Energy Round(int digits)
         {
-            return new LuminousIntensity(Math.Round(Value, digits), Unit);
+            return new Energy(Math.Round(Value, digits), Unit);
         }
 
         /// <inheritdoc/>
@@ -276,18 +276,18 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public static LuminousIntensity Parse(string s, IFormatProvider? provider)
+        public static Energy Parse(string s, IFormatProvider? provider)
         {
             var tokens  = s.Split(' ', 2);
 
             var value   = double.Parse(tokens[0]);
             var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
 
-            return new LuminousIntensity(value, unit);
+            return new Energy(value, unit);
         }
 
         /// <inheritdoc/>
-        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out LuminousIntensity result)
+        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Energy result)
         {
             if (string.IsNullOrEmpty(s))
             {
@@ -302,101 +302,101 @@ namespace SI.Units.NET
             }
             catch
             {
-                result = default(LuminousIntensity);
+                result = default(Energy);
                 return false;
             }
         }
 
         #region OperatorOverloading
 
-        public static LuminousIntensity operator++(LuminousIntensity value)
+        public static Energy operator++(Energy value)
         {
-            return new LuminousIntensity(value.Value + 1, value.Unit);
+            return new Energy(value.Value + 1, value.Unit);
         }
 
-        public static LuminousIntensity operator--(LuminousIntensity value)
+        public static Energy operator--(Energy value)
         {
-            return new LuminousIntensity(value.Value - 1, value.Unit);
+            return new Energy(value.Value - 1, value.Unit);
         }
 
-        public static LuminousIntensity operator/(LuminousIntensity value, double scalar)
+        public static Energy operator/(Energy value, double scalar)
         {
-            return new LuminousIntensity(value.Value / scalar, value.Unit);
+            return new Energy(value.Value / scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator*(LuminousIntensity value, double scalar)
+        public static Energy operator*(Energy value, double scalar)
         {
-            return new LuminousIntensity(value.Value * scalar, value.Unit);
+            return new Energy(value.Value * scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator*(double scalar, LuminousIntensity value)
+        public static Energy operator*(double scalar, Energy value)
         {
-            return new LuminousIntensity(value.Value * scalar, value.Unit);
+            return new Energy(value.Value * scalar, value.Unit);
         }
 
-        public static LuminousIntensity operator-(LuminousIntensity a)
+        public static Energy operator-(Energy a)
         {
-            return new LuminousIntensity(-a.Value, a.Unit);
+            return new Energy(-a.Value, a.Unit);
         }
 
-        public static LuminousIntensity operator-(LuminousIntensity a, LuminousIntensity b)
-        {
-            if (a.Unit == b.Unit)
-            {
-                return new LuminousIntensity(a.Value - b.Value, a.Unit);
-            }
-
-            return new LuminousIntensity(a.BaseValue() - b.BaseValue(), BaseUnit);
-        }
-
-        public static LuminousIntensity operator+(LuminousIntensity a, LuminousIntensity b)
+        public static Energy operator-(Energy a, Energy b)
         {
             if (a.Unit == b.Unit)
             {
-                return new LuminousIntensity(a.Value + b.Value, a.Unit);
+                return new Energy(a.Value - b.Value, a.Unit);
             }
 
-            return new LuminousIntensity(a.BaseValue() + b.BaseValue(), BaseUnit);
+            return new Energy(a.BaseValue() - b.BaseValue(), BaseUnit);
         }
 
-        public static double operator/(LuminousIntensity a, LuminousIntensity b)
+        public static Energy operator+(Energy a, Energy b)
+        {
+            if (a.Unit == b.Unit)
+            {
+                return new Energy(a.Value + b.Value, a.Unit);
+            }
+
+            return new Energy(a.BaseValue() + b.BaseValue(), BaseUnit);
+        }
+
+        public static double operator/(Energy a, Energy b)
         {
             return a.BaseValue() / b.BaseValue();
         }
 
-        public static bool operator==(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator==(Energy a, Energy b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator!=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator!=(Energy a, Energy b)
         {
             return !a.Equals(b);
         }
 
-        public static bool operator>(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator>(Energy a, Energy b)
         {
             return a.BaseValue() > b.BaseValue();
         }
 
-        public static bool operator<(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator<(Energy a, Energy b)
         {
             return a.BaseValue() < b.BaseValue();
         }
 
-        public static bool operator>=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator>=(Energy a, Energy b)
         {
             return a.BaseValue() >= b.BaseValue();
         }
 
-        public static bool operator<=(LuminousIntensity a, LuminousIntensity b)
+        public static bool operator<=(Energy a, Energy b)
         {
             return a.BaseValue() <= b.BaseValue();
         }
 
-        public static LuminousIntensity operator%(LuminousIntensity a, double b)
+        public static Energy operator%(Energy a, double b)
         {
-            return new LuminousIntensity(a.Value % b, a.Unit);
+            return new Energy(a.Value % b, a.Unit);
         }
 
         #endregion
