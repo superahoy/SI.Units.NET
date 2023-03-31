@@ -12,7 +12,7 @@ namespace SI.Units.NET
         public const Units BaseUnit = Units.Watt;
 
         /// <summary> Base symbol </summary>
-        public const string BaseSymbol = "J";
+        public const string BaseSymbol = "W";
 
         /// <summary> Supported units of measure for Power Quantity type </summary>
         public enum Units
