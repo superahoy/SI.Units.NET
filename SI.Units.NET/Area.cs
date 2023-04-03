@@ -411,6 +411,16 @@ namespace SI.Units.NET
             return new Area(a.Value % b, a.Unit);
         }
 
+        public static Volume operator*(Area a, Length b)
+        {
+            return new Volume(a.BaseValue() * b.BaseValue(), Volume.BaseUnit);
+        }
+
+        public static Length operator/(Area a, Length b)
+        {
+            return new Length(a.BaseValue() / b.BaseValue(), Length.BaseUnit);
+        }
+        
         #endregion
     }
 }

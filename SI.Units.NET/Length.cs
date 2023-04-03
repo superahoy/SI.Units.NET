@@ -450,6 +450,16 @@ namespace SI.Units.NET
             return new Length(a.Value % b, a.Unit);
         }
 
+        public static Area operator*(Length a, Length b)
+        {
+            return new Area(a.BaseValue() * b.BaseValue(), Area.BaseUnit);
+        }
+
+        public static Velocity operator/(Length a, Time b)
+        {
+            return new Velocity(a.BaseValue() / b.BaseValue(), Velocity.BaseUnit);
+        }
+
         #endregion
     }
 }
