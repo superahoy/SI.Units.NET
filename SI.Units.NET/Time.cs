@@ -15,13 +15,13 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "s";
 
-        /// <summary> Time, Minute from Table 8. Non-SI units accepted for use with the SI units </summary>
+        /// <summary> Time, Minute, Symbol for unit from Table 8. Non-SI units accepted for use with the SI units </summary>
         public const string MinuteSymbol = "min";
 
-        /// <summary> Time, Hour from Table 8. Non-SI units accepted for use with the SI units </summary>
+        /// <summary> Time, Hour, Symbol for unit from Table 8. Non-SI units accepted for use with the SI units </summary>
         public const string HourSymbol = "hr";
 
-        /// <summary> Time, Day from Table 8. Non-SI units accepted for use with the SI units </summary>
+        /// <summary> Time, Day, Symbol for unit from Table 8. Non-SI units accepted for use with the SI units </summary>
         public const string DaySymbol = "d";
 
         /// <summary> Time, Minute, Value in SI Units, from Table 8. Non-SI units accepted for use with the SI units </summary>
