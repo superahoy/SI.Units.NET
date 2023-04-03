@@ -4,7 +4,7 @@ namespace SI.Units.NET
 {
     /// <summary>
     /// IQuantity defines the interface for all Quantity based types, which
-    /// are defined by the Internation System of Units
+    /// are defined by the International System of Units
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IQuantity<T> : IFormattable,
