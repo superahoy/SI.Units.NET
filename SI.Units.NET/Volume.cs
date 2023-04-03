@@ -15,6 +15,9 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "m³";
 
+        /// <summary> Volume, Litre, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string LiterSymbol = "L";
+
         /// <summary> Supported units of measure for Volume Quantity type </summary>
         public enum Units
         {
@@ -30,6 +33,9 @@ namespace SI.Units.NET
             CubicYard,
             CubicMile,
             Liter,
+            Deciliter,
+            Centiliter,
+            Milliliter,
             Gallon,
             Quart,
             Pint,
@@ -57,6 +63,9 @@ namespace SI.Units.NET
             CubicFoot2CubicMeter * 27.0,                // CubicYard
             CubicFoot2CubicMeter * 5280 * 5280 * 5280,  // CubicMile
             1.0e-3,                                     // Liter
+            1.0e-4,                                     // Deciliter
+            1.0e-5,                                     // Centiliter
+            1.0e-6,                                     // Milliliter
             Gallon2CubicMeter,                          // Gallon
             Gallon2CubicMeter / 4.0,                    // Quart
             Gallon2CubicMeter / 8.0,                    // Pint
@@ -78,11 +87,14 @@ namespace SI.Units.NET
             Prefixes.Deca.Symbol    + BaseSymbol,
             Prefixes.Hecto.Symbol   + BaseSymbol,
             Prefixes.Kilo.Symbol    + BaseSymbol,
-            "in³",      // CubicInch
-            "ft³",      // CubicFoot,
-            "yd³",      // CubicYard
-            "mi³",      // CubicMile,
-            "L",        // Liter,
+            "in³",  // CubicInch
+            "ft³",  // CubicFoot,
+            "yd³",  // CubicYard
+            "mi³",  // CubicMile,
+            LiterSymbol,                            // Liter,
+            Prefixes.Deci.Symbol  + LiterSymbol,    // Deciliter,
+            Prefixes.Centi.Symbol + LiterSymbol,    // Centiliter,
+            Prefixes.Milli.Symbol + LiterSymbol,    // Milliliter,
             "gal",      // Gallon,
             "qt",       // Quart,
             "pt",       // Pint
