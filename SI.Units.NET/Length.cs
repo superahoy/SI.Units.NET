@@ -86,17 +86,17 @@ namespace SI.Units.NET
             Prefixes.Giga.Factor,   // Gigameter
             Prefixes.Tera.Factor,   // Terameter
             Prefixes.Peta.Factor,   // Petameter
-            FOOT2METER / 12.0,      // Inch
-            FOOT2METER,             // Foot
-            FOOT2METER * 3.0,       // Yard
-            FOOT2METER * 5280.0,    // Mile
-            1852.0,                 // NauticalMile
-            FOOT2METER * 0.66,      // Link
-            FOOT2METER * 66,        // Chain
-            FOOT2METER * 16.5,      // Rod
-            FOOT2METER * 660,       // Furlong
-            FOOT2METER * 6.0,       // Fathom
-            AstronomicalUnitValue   // AstronomicalUnit
+            USCustomary.Inch.Factor,    // Inch
+            USCustomary.Foot.Factor,    // Foot
+            USCustomary.Yard.Factor,    // Yard
+            USCustomary.Mile.Factor,    // Mile
+            1852.0,                     // NauticalMile
+            USCustomary.Link.Factor,    // Link
+            USCustomary.Chain.Factor,   // Chain
+            USCustomary.Rod.Factor,     // Rod
+            USCustomary.Furlong.Factor, // Furlong
+            USCustomary.Fathom.Factor,  // Fathom
+            AstronomicalUnitValue       // AstronomicalUnit
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -122,17 +122,17 @@ namespace SI.Units.NET
             Prefixes.Giga.Symbol    + BaseSymbol,
             Prefixes.Tera.Symbol    + BaseSymbol,
             Prefixes.Peta.Symbol    + BaseSymbol,
-            "in",       // Inch
-            "ft",       // Foot
-            "yd",       // Yard
-            "mi",       // Mile
-            "NM",       // Nautical Mile
-            "lnk",      // Link
-            "ch",       // Chain
-            "rod",      // Rod
-            "fur",      // Furlong
-            "ftm",      // Fathom
-            AstronomicalUnitSymbol        // AstronomicalUnit
+            USCustomary.Inch.Symbol,    // Inch
+            USCustomary.Foot.Symbol,    // Foot
+            USCustomary.Yard.Symbol,    // Yard
+            USCustomary.Mile.Symbol,    // Mile
+            "NM",                       // Nautical Mile (Symbol defined by International Civil Aviation Organization)
+            USCustomary.Link.Symbol,    // Link
+            USCustomary.Chain.Symbol,   // Chain
+            USCustomary.Rod.Symbol,     // Rod
+            USCustomary.Furlong.Symbol, // Furlong
+            USCustomary.Fathom.Symbol,  // Fathom
+            AstronomicalUnitSymbol      // AstronomicalUnit
         };
 
         /// <summary>

@@ -86,12 +86,12 @@ namespace SI.Units.NET
             1e6,                            // Kilotonne
             1e9,                            // Megatonne
             1e12,                           // Gigatonne
-            LB2KG / 16,                     // Ounce
-            LB2KG,                          // Pound
-            LB2KG * 2000,                   // Ton
-            LB2KG * 2240,                   // LongTon
-            LB2KG * 32.174048556,           // Slug
-            LB2KG * 14,                     // Stone
+            USCustomary.Ounce.Factor,       // Ounce
+            USCustomary.Pound.Factor,       // Pound
+            USCustomary.Ton.Factor,         // Ton
+            USCustomary.LongTon.Factor,     // LongTon
+            USCustomary.Slug.Factor,        // Slug
+            USCustomary.Stone.Factor,       // Stone
         };
 
         /// <summary>
@@ -115,16 +115,16 @@ namespace SI.Units.NET
             Prefixes.Giga.Symbol    + BaseSymbol,
             Prefixes.Tera.Symbol    + BaseSymbol,
             Prefixes.Peta.Symbol    + BaseSymbol,
-            TonneSymbol,                            // Tonne,
-            Prefixes.Kilo.Symbol + TonneSymbol,     // Kilotonne
-            Prefixes.Mega.Symbol + TonneSymbol,     // Megatonne
-            Prefixes.Giga.Symbol + TonneSymbol,     // Gigatonne
-            "oz",                                   // Ounce
-            "lb",                                   // Pound
-            "tn",                                   // Ton
-            "LT",                                   // LongTon
-            "slug",                                 // Slug
-            "st",                                   // Stone
+            TonneSymbol,                        // Tonne,
+            Prefixes.Kilo.Symbol + TonneSymbol, // Kilotonne
+            Prefixes.Mega.Symbol + TonneSymbol, // Megatonne
+            Prefixes.Giga.Symbol + TonneSymbol, // Gigatonne
+            USCustomary.Ounce.Symbol,           // Ounce
+            USCustomary.Pound.Symbol,           // Pound
+            USCustomary.Ton.Symbol,             // Ton
+            USCustomary.LongTon.Symbol,         // LongTon
+            USCustomary.Slug.Symbol,            // Slug
+            USCustomary.Stone.Symbol,           // Stone
         };
 
         /// <summary>
