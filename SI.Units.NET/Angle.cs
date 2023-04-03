@@ -14,6 +14,8 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "rad";
 
+        public const double DEG2RAD = Math.PI / 180.0;
+
         /// <summary> Supported units of measure for Angle Quantity type </summary>
         public enum Units
         {
@@ -37,7 +39,7 @@ namespace SI.Units.NET
             Prefixes.Centi.Factor,  // Centiradian
             Prefixes.Milli.Factor,  // Milliradian
             Prefixes.Micro.Factor,  // Microradian
-            Math.PI / 180.0,        // Degree
+            DEG2RAD,        // Degree
             Math.PI / 10800.0,      // Minute
             Math.PI / 648000.0      // Second
         };
