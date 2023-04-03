@@ -37,7 +37,8 @@ namespace SI.Units.NET
             Millibar,
             InchesMercury,
             MillimetersMercury,
-            PoundsPerSquareInch,
+            [Description("Pound-Force per Square Inch")]
+            PoundPerSquareInch,
             [Description("Average air pressure at sea level at a temperature of 15 degrees Celsius")]
             Atmosphere 
         };
@@ -66,7 +67,7 @@ namespace SI.Units.NET
             100,                    // Millibar
             3386.38866666667,       // InchesMercury
             133.322387415,          // MillimetersMercury
-            6894.7572931783,        // PoundsPerSquareInch
+            6894.7572931783,        // PoundPerSquareInch
             101325.0                // Atmosphere
         };
 
@@ -97,7 +98,7 @@ namespace SI.Units.NET
             "mbar", // Millibar
             "inHg", // InchesMercury
             "mmHg", // MillimetersMercury
-            "psi",  // PoundsPerSquareInch
+            "psi",  // PoundPerSquareInch
             "atm"   // Atmosphere
         };
 
