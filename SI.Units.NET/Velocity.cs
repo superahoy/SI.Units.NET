@@ -65,47 +65,47 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,            // MeterPerSecond,
-            1.0 / 60.0,     // MeterPerMinute,
-            1.0 / 3600.0,   // MeterPerHour,
+            1.0,                    // MeterPerSecond,
+            1.0 / Time.MinuteValue, // MeterPerMinute,
+            1.0 / Time.HourValue,   // MeterPerHour,
 
-            Prefixes.Deci.Factor,           // DecimeterPerSecond,
-            Prefixes.Deci.Factor / 60.0,    // DecimeterPerMinute,
-            Prefixes.Deci.Factor / 3600.0,  // DecimeterPerHour,
+            Prefixes.Deci.Factor,                       // DecimeterPerSecond,
+            Prefixes.Deci.Factor / Time.MinuteValue,    // DecimeterPerMinute,
+            Prefixes.Deci.Factor / Time.HourValue,      // DecimeterPerHour,
 
-            Prefixes.Centi.Factor,          // CentimeterPerSecond,
-            Prefixes.Centi.Factor / 60.0,   // CentimeterPerMinute,
-            Prefixes.Centi.Factor / 3600.0, // CentimeterPerHour,
+            Prefixes.Centi.Factor,                      // CentimeterPerSecond,
+            Prefixes.Centi.Factor / Time.MinuteValue,   // CentimeterPerMinute,
+            Prefixes.Centi.Factor / Time.HourValue,     // CentimeterPerHour,
 
-            Prefixes.Milli.Factor,          // MillimeterPerSecond,
-            Prefixes.Milli.Factor / 60.0,   // MillimeterPerMinute,
-            Prefixes.Milli.Factor / 3600.0, // MillimeterPerHour,
+            Prefixes.Milli.Factor,                      // MillimeterPerSecond,
+            Prefixes.Milli.Factor / Time.MinuteValue,   // MillimeterPerMinute,
+            Prefixes.Milli.Factor / Time.HourValue,     // MillimeterPerHour,
 
-            Prefixes.Deca.Factor,           // DecameterPerSecond,
-            Prefixes.Deca.Factor / 60.0,    // DecameterPerMinute,
-            Prefixes.Deca.Factor / 3600.0,  // DecameterPerHour,
+            Prefixes.Deca.Factor,                       // DecameterPerSecond,
+            Prefixes.Deca.Factor / Time.MinuteValue,    // DecameterPerMinute,
+            Prefixes.Deca.Factor / Time.HourValue,      // DecameterPerHour,
 
-            Prefixes.Hecto.Factor,          // HectometerPerSecond,
-            Prefixes.Hecto.Factor / 60.0,   // HectometerPerMinute,
-            Prefixes.Hecto.Factor / 3600.0, // HectometerPerHour,
+            Prefixes.Hecto.Factor,                      // HectometerPerSecond,
+            Prefixes.Hecto.Factor / Time.MinuteValue,   // HectometerPerMinute,
+            Prefixes.Hecto.Factor / Time.HourValue,     // HectometerPerHour,
 
-            Prefixes.Kilo.Factor,           // KilometerPerSecond,
-            Prefixes.Kilo.Factor / 60.0,    // KilometerPerMinute,
-            Prefixes.Kilo.Factor / 3600.0,  // KilometerPerHour,
+            Prefixes.Kilo.Factor,                       // KilometerPerSecond,
+            Prefixes.Kilo.Factor / Time.MinuteValue,    // KilometerPerMinute,
+            Prefixes.Kilo.Factor / Time.HourValue,      // KilometerPerHour,
 
-            Length.FOOT2METER,                  // FootPerSecond,
-            Length.FOOT2METER / 60.0,           // FootPerMinute,
-            Length.FOOT2METER / 3600.0,         // FootPerHour,
+            Length.FOOT2METER,                          // FootPerSecond,
+            Length.FOOT2METER / Time.MinuteValue,       // FootPerMinute,
+            Length.FOOT2METER / Time.HourValue,         // FootPerHour,
 
-            Length.FOOT2METER * 3,              // YardPerSecond,
-            Length.FOOT2METER * 3 / 60.0,       // YardPerMinute,
-            Length.FOOT2METER * 3 / 3600.0,     // YardPerHour,
+            Length.FOOT2METER * 3,                      // YardPerSecond,
+            Length.FOOT2METER * 3 / Time.MinuteValue,   // YardPerMinute,
+            Length.FOOT2METER * 3 / Time.HourValue,     // YardPerHour,
 
-            Length.FOOT2METER * 5280,           // MilePerSecond,
-            Length.FOOT2METER * 5280 / 60.0,    // MilePerMinute,
-            Length.FOOT2METER * 5280 / 3600.0,  // MilePerHour,
+            Length.FOOT2METER * 5280,                       // MilePerSecond,
+            Length.FOOT2METER * 5280 / Time.MinuteValue,    // MilePerMinute,
+            Length.FOOT2METER * 5280 / Time.HourValue,      // MilePerHour,
 
-            1852.0 / 3600.0,                    // Knot (1 Nautical Mile per Hour / Seconds Per Hour)
+            1852.0 / Time.HourValue,                        // Knot (1 Nautical Mile per Hour / Seconds Per Hour)
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
