@@ -24,6 +24,15 @@ namespace SI.Units.NET
         /// <summary> Time, Day from Table 8. Non-SI units accepted for use with the SI units </summary>
         public const string DaySymbol = "d";
 
+        /// <summary> Time, Minute, Value in SI Units, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const double MinuteValue = 60.0;
+
+        /// <summary> Time, Hour, Value in SI Units, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const double HourValue = 3600.0;
+
+        /// <summary> Time, Day, Value in SI Units, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const double DayValue = 86400.0;
+
         /// <summary> Supported units of measure for Time Quantity type </summary>
         public enum Units
         {
@@ -70,9 +79,9 @@ namespace SI.Units.NET
             Prefixes.Giga.Factor,   // Gigasecond
             Prefixes.Tera.Factor,   // Terasecond
             Prefixes.Peta.Factor,   // Petasecond
-            60.0,                   // Minute
-            3600.0,                 // Hour
-            86400.0                 // Day
+            MinuteValue,            // Minute
+            HourValue,              // Hour
+            DayValue                // Day
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();

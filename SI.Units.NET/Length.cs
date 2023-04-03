@@ -15,6 +15,12 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "m";
 
+        /// <summary> Length, Astronomical Unit, Symbol for unit, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string AstronomicalUnitSymbol = "au";
+
+        /// <summary> Length, Astronomical Unit, Value in SI Units, from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const double AstronomicalUnitValue = 149597870700.0;
+
         /// <summary> Supported units of measure for Length Quantity type </summary>
         public enum Units
         {
@@ -90,7 +96,7 @@ namespace SI.Units.NET
             FOOT2METER * 16.5,      // Rod
             FOOT2METER * 660,       // Furlong
             FOOT2METER * 6.0,       // Fathom
-            149597870700.0          // AstronomicalUnit
+            AstronomicalUnitValue   // AstronomicalUnit
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -126,7 +132,7 @@ namespace SI.Units.NET
             "rod",      // Rod
             "fur",      // Furlong
             "ftm",      // Fathom
-            "au"        // AstronomicalUnit
+            AstronomicalUnitSymbol        // AstronomicalUnit
         };
 
         /// <summary>
