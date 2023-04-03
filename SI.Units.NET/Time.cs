@@ -15,6 +15,15 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "s";
 
+        /// <summary> Time, Minute from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string MinuteSymbol = "min";
+
+        /// <summary> Time, Hour from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string HourSymbol = "hr";
+
+        /// <summary> Time, Day from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string DaySymbol = "d";
+
         /// <summary> Supported units of measure for Time Quantity type </summary>
         public enum Units
         {
@@ -89,9 +98,9 @@ namespace SI.Units.NET
             Prefixes.Giga.Symbol + BaseSymbol,
             Prefixes.Tera.Symbol + BaseSymbol,
             Prefixes.Peta.Symbol + BaseSymbol,
-            "min",
-            "hr",
-            "d"            
+            MinuteSymbol,
+            HourSymbol,
+            DaySymbol            
         };
 
         /// <summary>

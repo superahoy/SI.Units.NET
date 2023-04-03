@@ -18,6 +18,12 @@ namespace SI.Units.NET
         /// <summary> US Customary units definition, Pound to Kilogram </summary>
         internal const double LB2KG = 0.45359237;
 
+        /// <summary> Mass, Tonne from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string TonneSymbol = "t";
+
+        /// <summary> Mass, Dalton from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string DaltonSymbol = "Da";
+
         /// <summary> Supported units of measure for Mass Quantity type </summary>
         public enum Units
         {
@@ -109,10 +115,10 @@ namespace SI.Units.NET
             Prefixes.Giga.Symbol    + BaseSymbol,
             Prefixes.Tera.Symbol    + BaseSymbol,
             Prefixes.Peta.Symbol    + BaseSymbol,
-            "t",                                    // Tonne,
-            Prefixes.Kilo.Symbol + "t",             // Kilotonne
-            Prefixes.Mega.Symbol + "t",             // Megatonne
-            Prefixes.Giga.Symbol + "t",             // Gigatonne
+            TonneSymbol,                            // Tonne,
+            Prefixes.Kilo.Symbol + TonneSymbol,     // Kilotonne
+            Prefixes.Mega.Symbol + TonneSymbol,     // Megatonne
+            Prefixes.Giga.Symbol + TonneSymbol,     // Gigatonne
             "oz",                                   // Ounce
             "lb",                                   // Pound
             "tn",                                   // Ton

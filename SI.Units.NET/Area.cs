@@ -15,6 +15,9 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "m²";
 
+        /// <summary> Area, Hectare from Table 8. Non-SI units accepted for use with the SI units </summary>
+        public const string HectareSymbol = "ha";
+
         /// <summary> Supported units of measure for Area Quantity type </summary>
         public enum Units
         {
@@ -82,7 +85,7 @@ namespace SI.Units.NET
             Prefixes.Kilo.Symbol    + BaseSymbol,
             Prefixes.Mega.Symbol    + BaseSymbol,
             Prefixes.Giga.Symbol    + BaseSymbol,
-            "ha",   // Hectare
+            HectareSymbol,  // Hectare
             "in²",  // SquareInch
             "ft²",  // SquareFoot,
             "yd²",  // SquareYard
