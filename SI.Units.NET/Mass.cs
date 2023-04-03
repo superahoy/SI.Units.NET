@@ -15,9 +15,6 @@ namespace SI.Units.NET
         /// <summary> Base symbol </summary>
         public const string BaseSymbol = "g";
         
-        /// <summary> US Customary units definition, Pound to Kilogram </summary>
-        internal const double LB2KG = 0.45359237;
-
         /// <summary> Mass, Tonne from Table 8. Non-SI units accepted for use with the SI units </summary>
         public const string TonneSymbol = "t";
 

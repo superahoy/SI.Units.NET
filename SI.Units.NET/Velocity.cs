@@ -45,6 +45,10 @@ namespace SI.Units.NET
             KilometerPerMinute,
             KilometerPerHour,
 
+            InchPerSecond,
+            InchPerMinute,
+            InchPerHour,
+
             FootPerSecond,
             FootPerMinute,
             FootPerHour,
@@ -93,17 +97,21 @@ namespace SI.Units.NET
             Prefixes.Kilo.Factor / Time.MinuteValue,    // KilometerPerMinute,
             Prefixes.Kilo.Factor / Time.HourValue,      // KilometerPerHour,
 
-            Length.FOOT2METER,                          // FootPerSecond,
-            Length.FOOT2METER / Time.MinuteValue,       // FootPerMinute,
-            Length.FOOT2METER / Time.HourValue,         // FootPerHour,
+            USCustomary.Inch.Factor,                    // InchPerSecond,
+            USCustomary.Inch.Factor / Time.MinuteValue, // InchPerMinute,
+            USCustomary.Inch.Factor / Time.HourValue,   // InchPerHour,
 
-            Length.FOOT2METER * 3,                      // YardPerSecond,
-            Length.FOOT2METER * 3 / Time.MinuteValue,   // YardPerMinute,
-            Length.FOOT2METER * 3 / Time.HourValue,     // YardPerHour,
+            USCustomary.Foot.Factor,                    // FootPerSecond,
+            USCustomary.Foot.Factor / Time.MinuteValue, // FootPerMinute,
+            USCustomary.Foot.Factor / Time.HourValue,   // FootPerHour,
 
-            Length.FOOT2METER * 5280,                       // MilePerSecond,
-            Length.FOOT2METER * 5280 / Time.MinuteValue,    // MilePerMinute,
-            Length.FOOT2METER * 5280 / Time.HourValue,      // MilePerHour,
+            USCustomary.Yard.Factor,                    // YardPerSecond,
+            USCustomary.Yard.Factor / Time.MinuteValue, // YardPerMinute,
+            USCustomary.Yard.Factor / Time.HourValue,   // YardPerHour,
+
+            USCustomary.Mile.Factor,                    // MilePerSecond,
+            USCustomary.Mile.Factor / Time.MinuteValue, // MilePerMinute,
+            USCustomary.Mile.Factor / Time.HourValue,   // MilePerHour,
 
             1852.0 / Time.HourValue,                        // Knot (1 Nautical Mile per Hour / Seconds Per Hour)
         };
@@ -144,16 +152,20 @@ namespace SI.Units.NET
             "km/min",   // KilometerPerMinute,
             "km/hr",    // KilometerPerHour,
 
-            "ft/s",     // FootPerSecond,
-            "ft/min",   // FootPerMinute,
-            "ft/hr",    // FootPerHour,
+            $"{USCustomary.Inch.Symbol}/{Time.BaseSymbol}",     // InchPerSecond,
+            $"{USCustomary.Inch.Symbol}/{Time.MinuteSymbol}",   // InchPerMinute,
+            $"{USCustomary.Inch.Symbol}/{Time.HourSymbol}",     // InchPerHour,
 
-            "yd/s",     // YardPerSecond,
-            "yd/min",   // YardPerMinute,
-            "yd/hr",    // YardPerHour,
+            $"{USCustomary.Foot.Symbol}/{Time.BaseSymbol}",     // FootPerSecond,
+            $"{USCustomary.Foot.Symbol}/{Time.MinuteSymbol}",   // FootPerMinute,
+            $"{USCustomary.Foot.Symbol}/{Time.HourSymbol}",     // FootPerHour,
 
-            "mi/s",     // MilePerSecond,
-            "mi/min",   // MilePerMinute,
+            $"{USCustomary.Yard.Symbol}/{Time.BaseSymbol}",     // YardPerSecond,
+            $"{USCustomary.Yard.Symbol}/{Time.MinuteSymbol}",   // YardPerMinute,
+            $"{USCustomary.Yard.Symbol}/{Time.HourSymbol}",     // YardPerHour,
+
+            $"{USCustomary.Mile.Symbol}/{Time.BaseSymbol}",     // MilePerSecond,
+            $"{USCustomary.Mile.Symbol}/{Time.MinuteSymbol}",   // MilePerMinute,
             "mph",      // MilePerHour,
 
             "kt",       // Knot

@@ -63,9 +63,6 @@ namespace SI.Units.NET
             AstronomicalUnit,
         };
 
-        /// <summary> US Customary units definition, foot to meter </summary>
-        internal const double FOOT2METER = 0.3048;
-
         /// <summary>
         /// Conversion factors from target unit to base unit.
         /// </summary>

@@ -51,13 +51,13 @@ namespace SI.Units.NET
             1.0e3,  // GramPerCubicCentimeter
             1.0e6,  // GramPerCubicMillimeter
             
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3) * Math.Pow(12,3),    // PoundPerCubicInch
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3),                     // PoundPerCubicFoot
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3) / Math.Pow(3, 3),    // PoundPerCubicYard
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3) * Math.Pow(12,3),    // PoundPerCubicInch
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3),                     // PoundPerCubicFoot
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3) / Math.Pow(3, 3),    // PoundPerCubicYard
             
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3) * Math.Pow(12,3) / 16.0, // OuncePerCubicInch
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3) / 16.0,                  // OuncePerCubicFoot
-            Mass.LB2KG / Math.Pow(Length.FOOT2METER,3) / Math.Pow(3, 3) / 16.0, // OuncePerCubicYard            
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3) * Math.Pow(12,3) / 16.0, // OuncePerCubicInch
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3) / 16.0,                  // OuncePerCubicFoot
+            USCustomary.POUND2KILO / Math.Pow(USCustomary.FOOT2METER,3) / Math.Pow(3, 3) / 16.0, // OuncePerCubicYard            
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();

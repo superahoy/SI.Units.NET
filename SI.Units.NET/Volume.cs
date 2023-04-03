@@ -42,7 +42,7 @@ namespace SI.Units.NET
             FluidOunce
         };
 
-        private const double CubicFoot2CubicMeter = Length.FOOT2METER * Length.FOOT2METER * Length.FOOT2METER;
+        private const double CubicFoot2CubicMeter = USCustomary.FOOT2METER * USCustomary.FOOT2METER * USCustomary.FOOT2METER;
         
         private const double Gallon2CubicMeter = 0.00378541178;
 

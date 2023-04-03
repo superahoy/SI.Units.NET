@@ -40,7 +40,7 @@ namespace SI.Units.NET
             Acre
         };
 
-        private const double SqFt2SqM = Length.FOOT2METER * Length.FOOT2METER;
+        private const double SqFt2SqM = USCustomary.FOOT2METER * USCustomary.FOOT2METER;
 
         /// <summary>
         /// Conversion factors from target unit to base unit.
