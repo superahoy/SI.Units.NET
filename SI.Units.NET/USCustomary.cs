@@ -11,6 +11,15 @@
         /// <summary> US Customary units definition, pound to kilogram </summary>
         public const double POUND2KILO = 0.45359237;
 
+        /// <summary> 1 Gallon to cubic meter </summary>
+        public const double GALLON2CUBICMETER = 0.00378541178;
+
+        /// <summary> 1 Cubic foot to cubic meter </summary>
+        public const double CUBICFOOT2CUBICMETER = FOOT2METER * FOOT2METER * FOOT2METER;
+
+        /// <summary> 1 Square foot to square meter </summary>
+        public const double SQUAREFOOT2SQUAREMETER = FOOT2METER * FOOT2METER;
+
         #region Length
         
         /// <summary> 12 inches = 1 foot </summary>
@@ -61,6 +70,21 @@
 
         /// <summary> 1 slug = 32.174048556 pounds </summary>
         public static readonly Prefix Slug = new Prefix("slug", "slug", POUND2KILO * 32.174048556);
+
+        #endregion
+
+        #region Volume
+
+        public static readonly Prefix Gallon = new Prefix("gallon", "gal", GALLON2CUBICMETER);
+
+        /// <summary> 4 Quarts = 1 Gallon </summary>
+        public static readonly Prefix Quart = new Prefix("quart", "qt", GALLON2CUBICMETER / 4.0);
+
+        /// <summary> 8 Pints = 1 Gallon </summary>
+        public static readonly Prefix Pint = new Prefix("pint", "pt", GALLON2CUBICMETER / 8.0);
+
+        /// <summary> 128 Fluid Onces = 1 Gallon </summary>
+        public static readonly Prefix FluidOnce = new Prefix("fluid ounce", "fl oz", GALLON2CUBICMETER / 128.0);
 
         #endregion
     }

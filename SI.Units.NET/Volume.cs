@@ -42,10 +42,6 @@ namespace SI.Units.NET
             FluidOunce
         };
 
-        private const double CubicFoot2CubicMeter = USCustomary.FOOT2METER * USCustomary.FOOT2METER * USCustomary.FOOT2METER;
-        
-        private const double Gallon2CubicMeter = 0.00378541178;
-
         /// <summary>
         /// Conversion factors from target unit to base unit.
         /// </summary>
@@ -58,18 +54,18 @@ namespace SI.Units.NET
             Math.Pow(Prefixes.Deca.Factor,3),           // CubicDecameter
             Math.Pow(Prefixes.Hecto.Factor,3),          // CubicHectometer
             Math.Pow(Prefixes.Kilo.Factor,3),           // CubicKilometer
-            CubicFoot2CubicMeter / 1728.0,              // CubicInch
-            CubicFoot2CubicMeter,                       // CubicFoot
-            CubicFoot2CubicMeter * 27.0,                // CubicYard
-            CubicFoot2CubicMeter * 5280 * 5280 * 5280,  // CubicMile
+            USCustomary.CUBICFOOT2CUBICMETER / 1728.0,  // CubicInch
+            USCustomary.CUBICFOOT2CUBICMETER,           // CubicFoot
+            USCustomary.CUBICFOOT2CUBICMETER * 27.0,    // CubicYard
+            USCustomary.CUBICFOOT2CUBICMETER * 5280 * 5280 * 5280,  // CubicMile
             1.0e-3,                                     // Liter
             1.0e-4,                                     // Deciliter
             1.0e-5,                                     // Centiliter
             1.0e-6,                                     // Milliliter
-            Gallon2CubicMeter,                          // Gallon
-            Gallon2CubicMeter / 4.0,                    // Quart
-            Gallon2CubicMeter / 8.0,                    // Pint
-            Gallon2CubicMeter / 128.0                   // Fluid Ounce
+            USCustomary.Gallon.Factor,              // Gallon
+            USCustomary.Quart.Factor,               // Quart
+            USCustomary.Pint.Factor,                // Pint
+            USCustomary.FluidOnce.Factor            // Fluid Ounce
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -95,10 +91,10 @@ namespace SI.Units.NET
             Prefixes.Deci.Symbol  + LiterSymbol,    // Deciliter,
             Prefixes.Centi.Symbol + LiterSymbol,    // Centiliter,
             Prefixes.Milli.Symbol + LiterSymbol,    // Milliliter,
-            "gal",      // Gallon,
-            "qt",       // Quart,
-            "pt",       // Pint
-            "fl oz",    // Fluid Ounce
+            USCustomary.Gallon.Symbol,              // Gallon
+            USCustomary.Quart.Symbol,               // Quart
+            USCustomary.Pint.Symbol,                // Pint
+            USCustomary.FluidOnce.Symbol            // Fluid Ounce
         };
 
         /// <summary>
