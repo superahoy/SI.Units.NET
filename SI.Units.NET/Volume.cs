@@ -39,6 +39,7 @@ namespace SI.Units.NET
             Gallon,
             Quart,
             Pint,
+            Cup,
             FluidOunce
         };
 
@@ -58,14 +59,15 @@ namespace SI.Units.NET
             USCustomary.CUBICFOOT2CUBICMETER,           // CubicFoot
             USCustomary.CUBICFOOT2CUBICMETER * 27.0,    // CubicYard
             USCustomary.CUBICFOOT2CUBICMETER * 5280 * 5280 * 5280,  // CubicMile
-            1.0e-3,                                     // Liter
-            1.0e-4,                                     // Deciliter
-            1.0e-5,                                     // Centiliter
-            1.0e-6,                                     // Milliliter
-            USCustomary.Gallon.Factor,              // Gallon
-            USCustomary.Quart.Factor,               // Quart
-            USCustomary.Pint.Factor,                // Pint
-            USCustomary.FluidOnce.Factor            // Fluid Ounce
+            1.0e-3,                         // Liter
+            1.0e-4,                         // Deciliter
+            1.0e-5,                         // Centiliter
+            1.0e-6,                         // Milliliter
+            USCustomary.Gallon.Factor,      // Gallon
+            USCustomary.Quart.Factor,       // Quart
+            USCustomary.Pint.Factor,        // Pint
+            USCustomary.Cup.Factor,         // Cup
+            USCustomary.FluidOnce.Factor    // Fluid Ounce
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -94,6 +96,7 @@ namespace SI.Units.NET
             USCustomary.Gallon.Symbol,              // Gallon
             USCustomary.Quart.Symbol,               // Quart
             USCustomary.Pint.Symbol,                // Pint
+            USCustomary.Cup.Symbol,                 // Cup
             USCustomary.FluidOnce.Symbol            // Fluid Ounce
         };
 

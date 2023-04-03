@@ -83,6 +83,9 @@
         /// <summary> 8 Pints = 1 Gallon </summary>
         public static readonly Prefix Pint = new Prefix("pint", "pt", GALLON2CUBICMETER / 8.0);
 
+        /// <summary> 16 Cups = 1 Gallon </summary>
+        public static readonly Prefix Cup = new Prefix("cup", "c", GALLON2CUBICMETER / 16.0);
+
         /// <summary> 128 Fluid Onces = 1 Gallon </summary>
         public static readonly Prefix FluidOnce = new Prefix("fluid ounce", "fl oz", GALLON2CUBICMETER / 128.0);
 
