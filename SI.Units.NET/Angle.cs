@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using System.Text.Json.Serialization;
 
 namespace SI.Units.NET
 {
     /// <summary>
-    /// Represents Angle Base Quantity type from Table 2. SI base units
+    /// Represents Plane Angle
     /// </summary>
     public readonly struct Angle : IQuantity<Angle>
     {
@@ -13,12 +12,16 @@ namespace SI.Units.NET
         public const Units BaseUnit = Units.Radian;
 
         /// <summary> Base symbol </summary>
-        public const string BaseSymbol = "J";
+        public const string BaseSymbol = "rad";
 
         /// <summary> Supported units of measure for Angle Quantity type </summary>
         public enum Units
         {
             Radian,
+            Deciradian,
+            Centiradian,
+            Milliradian,
+            Microradian,
             Degree,
             Minute,
             Second,
@@ -30,6 +33,10 @@ namespace SI.Units.NET
         private static readonly double[] Factors =
         {
             1.0,                    // Radian
+            Prefixes.Deci.Factor,   // Deciradian
+            Prefixes.Centi.Factor,  // Centiradian
+            Prefixes.Milli.Factor,  // Milliradian
+            Prefixes.Micro.Factor,  // Microradian
             Math.PI / 180.0,        // Degree
             Math.PI / 10800.0,      // Minute
             Math.PI / 648000.0      // Second
@@ -43,7 +50,11 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly string[] Symbols =
         {
-            "rad",  // Radian
+            BaseSymbol,                             // Radian
+            Prefixes.Deci.Symbol    + BaseSymbol,   // Deciradian
+            Prefixes.Centi.Symbol   + BaseSymbol,   // Centiradian
+            Prefixes.Milli.Symbol   + BaseSymbol,   // Milliradian
+            Prefixes.Micro.Symbol   + BaseSymbol,   // Microradian
             "°",    // Degree
             "′",    // Minute
             "″"     // Second
