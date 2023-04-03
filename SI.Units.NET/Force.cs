@@ -31,7 +31,10 @@ namespace SI.Units.NET
             Meganewton,
             Giganewton,
             Teranewton,
-            Petanewton
+            Petanewton,
+
+            Poundal,
+            PoundForce
         };
 
         /// <summary>
@@ -54,6 +57,9 @@ namespace SI.Units.NET
             Prefixes.Giga.Factor,   // Giganewton
             Prefixes.Tera.Factor,   // Teranewton
             Prefixes.Peta.Factor,   // Petanewton
+
+            USCustomary.Poundal.Factor,
+            USCustomary.PoundForce.Factor,
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -78,7 +84,10 @@ namespace SI.Units.NET
             Prefixes.Mega.Symbol    + BaseSymbol,
             Prefixes.Giga.Symbol    + BaseSymbol,
             Prefixes.Tera.Symbol    + BaseSymbol,
-            Prefixes.Peta.Symbol    + BaseSymbol
+            Prefixes.Peta.Symbol    + BaseSymbol,
+
+            USCustomary.Poundal.Symbol,
+            USCustomary.PoundForce.Symbol,
         };
 
         /// <summary>

@@ -87,5 +87,13 @@
         public static readonly Prefix FluidOnce = new Prefix("fluid ounce", "fl oz", GALLON2CUBICMETER / 128.0);
 
         #endregion
+
+        #region Force
+
+        public static readonly Prefix Poundal = new Prefix("poundal", "pdl", 7.233014);
+        
+        public static readonly Prefix PoundForce = new Prefix("pound force", "lbf", 4.4482216);
+
+        #endregion
     }
 }
