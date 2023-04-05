@@ -27,7 +27,7 @@ namespace SI.Units.NET
         private static readonly double[] Factors =
         {
             1.0,    // DegreeCelsius
-            9.0/5.0 // DegreeFahrenheit
+            5.0/9.0 // DegreeFahrenheit
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
