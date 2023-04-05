@@ -71,6 +71,12 @@
         /// <summary> 1 slug = 32.174048556 pounds </summary>
         public static readonly Prefix Slug = new Prefix("slug", "slug", POUND2KILO * 32.174048556);
 
+        /// <summary> 1 Quarter = 2 Stone = 28 Pound </summary>
+        public static readonly Prefix Quarter = new Prefix("quarter", "qr", POUND2KILO * 28.0);
+
+        /// <summary> 7000 grain = 1 Pound </summary>
+        public static readonly Prefix Grain = new Prefix("grain", "gr", POUND2KILO / 7000.0);
+
         #endregion
 
         #region Volume

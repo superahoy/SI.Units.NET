@@ -53,7 +53,9 @@ namespace SI.Units.NET
             LongTon,
             Slug,
             [Description("1 Stone = 14 lb")]
-            Stone
+            Stone,
+            Quarter,
+            Grain
         };
 
         /// <summary> Base unit is Kilo, need to offset prefix factors </summary>
@@ -89,6 +91,8 @@ namespace SI.Units.NET
             USCustomary.LongTon.Factor,     // LongTon
             USCustomary.Slug.Factor,        // Slug
             USCustomary.Stone.Factor,       // Stone
+            USCustomary.Quarter.Factor,     // Quarter
+            USCustomary.Grain.Factor,       // Grain
         };
 
         /// <summary>
@@ -122,6 +126,8 @@ namespace SI.Units.NET
             USCustomary.LongTon.Symbol,         // LongTon
             USCustomary.Slug.Symbol,            // Slug
             USCustomary.Stone.Symbol,           // Stone
+            USCustomary.Quarter.Symbol,         // Quarter
+            USCustomary.Grain.Symbol,           // Grain
         };
 
         /// <summary>
