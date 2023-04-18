@@ -18,24 +18,44 @@ namespace SI.Units.NET
         public enum Units
         {
             KilogramPerSquareMeter,
+            KilogramPerSquareKilometer,
+            KilogramPerSquareHectometer,
+            KilogramPerSquareDecameter,
             KilogramPerSquareDecimeter,
             KilogramPerSquareCentimeter,
             KilogramPerSquareMillimeter,
 
+            GramPerSquareKilometer,
+            GramPerSquareHectometer,
+            GramPerSquareDecameter,
             GramPerSquareMeter,
             GramPerSquareDecimeter,
             GramPerSquareCentimeter,
             GramPerSquareMillimeter,
 
+            CentigramPerSquareKilometer,
+            CentigramPerSquareHectometer,
+            CentigramPerSquareDecameter,
             CentigramPerSquareMeter,
             CentigramPerSquareDecimeter,
             CentigramPerSquareCentimeter,
             CentigramPerSquareMillimeter,
 
+            MilligramPerSquareKilometer,
+            MilligramPerSquareHectometer,
+            MilligramPerSquareDecameter,
             MilligramPerSquareMeter,
             MilligramPerSquareDecimeter,
             MilligramPerSquareCentimeter,
             MilligramPerSquareMillimeter,
+
+            TonnePerSquareKilometer,
+            TonnePerSquareHectometer,
+            TonnePerSquareDecameter,
+            TonnePerSquareMeter,
+            TonnePerSquareDecimeter,
+            TonnePerSquareCentimeter,
+            TonnePerSquareMillimeter,
 
             OuncePerSquareInch,
             OuncePerSquareFoot,
@@ -45,7 +65,12 @@ namespace SI.Units.NET
             PoundPerSquareInch,
             PoundPerSquareFoot,
             PoundPerSquareYard,
-            PoundPerSquareMile
+            PoundPerSquareMile,
+
+            TonPerSquareInch,
+            TonPerSquareFoot,
+            TonPerSquareYard,
+            TonPerSquareMile,
         };
 
         /// <summary>
@@ -53,25 +78,45 @@ namespace SI.Units.NET
         /// </summary>
         private static readonly double[] Factors =
         {
-            1.0,                    // KilogramPerSquareMeter,
-            Prefixes.Deci.Factor,   // KilogramPerSquareDecimeter,
-            Prefixes.Centi.Factor,  // KilogramPerSquareCentimeter,
-            Prefixes.Milli.Factor,  // KilogramPerSquareMillimeter,
+            1.0,        // KilogramPerSquareMeter,
+            1.0e-6,     // KilogramPerSquareKilometer,
+            1.0e-4,     // KilogramPerSquareHectometer,
+            1.0e-2,     // KilogramPerSquareDecameter,
+            1.0e+2,     // KilogramPerSquareDecimeter,
+            1.0e+4,     // KilogramPerSquareCentimeter,
+            1.0e+6,     // KilogramPerSquareMillimeter,
 
-            0.001,  // GramPerSquareMeter,
-            0.1,    // GramPerSquareDecimeter,
-            10.0,   // GramPerSquareCentimeter,
-            1000,   // GramPerSquareMillimeter,
+            1.0e-9,     // GramPerSquareKilometer
+            1.0e-7,     // GramPerSquareHectometer,
+            1.0e-5,     // GramPerSquareDecameter,
+            1.0e-3,     // GramPerSquareMeter,
+            0.1,        // GramPerSquareDecimeter,
+            10.0,       // GramPerSquareCentimeter,
+            1000,       // GramPerSquareMillimeter,
 
-            1e-5,   // CentigramPerSquareMeter,
-            1e-3,   // CentigramPerSquareDecimeter,
-            1e-1,   // CentigramPerSquareCentimeter,
-            1e+2,   // CentigramPerSquareMillimeter,
+            1.0e-11,    // CentigramPerSquareKilometer,
+            1.0e-9,     // CentigramPerSquareHectometer,
+            1.0e-7,     // CentigramPerSquareDecameter,
+            1.0e-5,     // CentigramPerSquareMeter,
+            1.0e-3,     // CentigramPerSquareDecimeter,
+            1.0e-1,     // CentigramPerSquareCentimeter,
+            1.0e+2,     // CentigramPerSquareMillimeter,
 
-            1e-6,   // MilligramPerSquareMeter,
-            1e-4,   // MilligramPerSquareDecimeter,
-            1e-2,   // MilligramPerSquareCentimeter,
-            1.0,    // MilligramPerSquareMillimeter,
+            1.0e-12,    // MilligramPerSquareKilometer,
+            1.0e-10,    // MilligramPerSquareHectometer,
+            1.0e-8,     // MilligramPerSquareDecameter,
+            1e-6,       // MilligramPerSquareMeter,
+            1e-4,       // MilligramPerSquareDecimeter,
+            1e-2,       // MilligramPerSquareCentimeter,
+            1.0,        // MilligramPerSquareMillimeter,
+
+            1.0e-3,     // TonnePerSquareKilometer,
+            1.0e-1,     // TonnePerSquareHectometer,
+            1.0e+1,     // TonnePerSquareDecameter,
+            1.0e+3,     // TonnePerSquareMeter,
+            1.0e+5,     // TonnePerSquareDecimeter,
+            1.0e+7,     // TonnePerSquareCentimeter,
+            1.0e+9,     // TonnePerSquareMillimeter,
 
             USCustomary.Ounce.Factor / Math.Pow(USCustomary.Inch.Factor, 2), // OuncePerSquareInch,
             USCustomary.Ounce.Factor / Math.Pow(USCustomary.Foot.Factor, 2), // OuncePerSquareFoot,
@@ -82,6 +127,11 @@ namespace SI.Units.NET
             USCustomary.Pound.Factor / Math.Pow(USCustomary.Foot.Factor, 2), // PoundPerSquareFoot,
             USCustomary.Pound.Factor / Math.Pow(USCustomary.Yard.Factor, 2), // PoundPerSquareYard,
             USCustomary.Pound.Factor / Math.Pow(USCustomary.Mile.Factor, 2), // PoundPerSquareMile
+
+            USCustomary.Ton.Factor / Math.Pow(USCustomary.Inch.Factor, 2),  // TonPerSquareInch,
+            USCustomary.Ton.Factor / Math.Pow(USCustomary.Foot.Factor, 2),  // TonPerSquareFoot,
+            USCustomary.Ton.Factor / Math.Pow(USCustomary.Yard.Factor, 2),  // TonPerSquareYard,
+            USCustomary.Ton.Factor / Math.Pow(USCustomary.Mile.Factor, 2),  // TonPerSquareMile,
         };
 
         private static readonly double[] Inverse = Factors.Select(x => 1.0 / x).ToArray();
@@ -93,34 +143,59 @@ namespace SI.Units.NET
         private static readonly string[] Symbols =
         {
             BaseSymbol, // KilogramPerSquareMeter,
-            "kg/dm²",   // KilogramPerSquareDecimeter,
-            "kg/cm²",   // KilogramPerSquareCentimeter,
-            "kg/mm²",   // KilogramPerSquareMillimeter,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Kilo.Symbol}{Length.BaseSymbol}{Unicode.Squared}",      // KilogramPerSquareKilometer,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Hecto.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // KilogramPerSquareHectometer,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Deca.Symbol}{Length.BaseSymbol}{Unicode.Squared}",      // KilogramPerSquareDecameter,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Deci.Symbol}{Length.BaseSymbol}{Unicode.Squared}",      // KilogramPerSquareDecimeter,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Centi.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // KilogramPerSquareCentimeter,
+            $"{Prefixes.Kilo.Symbol}{Mass.BaseSymbol}/{Prefixes.Milli.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // KilogramPerSquareKilometer,
 
-            "g/m²",     // GramPerSquareMeter,
-            "g/dm²",    // GramPerSquareDecimeter,
-            "g/cm²",    // GramPerSquareCentimeter,
-            "g/mm²",    // GramPerSquareMillimeter,
+            $"{Mass.BaseSymbol}/{Prefixes.Kilo.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // gramPerSquareKilometer,
+            $"{Mass.BaseSymbol}/{Prefixes.Hecto.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // gramPerSquareHectometer,
+            $"{Mass.BaseSymbol}/{Prefixes.Deca.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // gramPerSquareDecameter,
+            $"{Mass.BaseSymbol}/{Length.BaseSymbol}{Unicode.Squared}",                          // gramPerSquareMeter,
+            $"{Mass.BaseSymbol}/{Prefixes.Deci.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // gramPerSquareDecimeter,
+            $"{Mass.BaseSymbol}/{Prefixes.Centi.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // gramPerSquareCentimeter,
+            $"{Mass.BaseSymbol}/{Prefixes.Milli.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // gramPerSquaremeter,
 
-            "cg/m²",    // CentigramPerSquareMeter,
-            "cg/dm²",   // CentigramPerSquareDecimeter,
-            "cg/cm²",   // CentigramPerSquareCentimeter,
-            "cg/mm²",   // CentigramPerSquareMillimeter,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Kilo.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // CentigramPerSquareKilometer,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Hecto.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // CentigramPerSquareHectometer,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Deca.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // CentigramPerSquareDecameter,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Length.BaseSymbol}{Unicode.Squared}",                           // CentigramPerSquareMeter,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Deci.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // CentigramPerSquareDecimeter,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Centi.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // CentigramPerSquareCentimeter,
+            $"{Prefixes.Centi.Symbol}{Mass.BaseSymbol}/{Prefixes.Milli.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // CentigramPerSquareCentimeter,
 
-            "mg/m²",    // MilligramPerSquareMeter,
-            "mg/dm²",   // MilligramPerSquareDecimeter,
-            "mg/cm²",   // MilligramPerSquareCentimeter,
-            "mg/mm²",   // MilligramPerSquareMillimeter,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Kilo.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // MilligramPerSquareKilometer,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Hecto.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // MilligramPerSquareHectometer,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Deca.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // MilligramPerSquareDecameter,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Length.BaseSymbol}{Unicode.Squared}",                           // MilligramPerSquareMeter,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Deci.Symbol}{Length.BaseSymbol}{Unicode.Squared}",     // MilligramPerSquareDecimeter,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Centi.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // MilligramPerSquareCentimeter,
+            $"{Prefixes.Milli.Symbol}{Mass.BaseSymbol}/{Prefixes.Milli.Symbol}{Length.BaseSymbol}{Unicode.Squared}",    // MilligramPerSquareMillimeter,
 
-            "oz/in²",   // OuncePerSquareInch,
-            "oz/ft²",   // OuncePerSquareFoot,
-            "oz/yd²",   // OuncePerSquareYard,
-            "oz/mi²",   // OuncePerSquareMile,
+            $"{Mass.TonneSymbol}/{Prefixes.Kilo.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // TonnePerSquareKilometer,
+            $"{Mass.TonneSymbol}/{Prefixes.Hecto.Symbol}{Length.BaseSymbol}{Unicode.Squared}",  // TonnePerSquareHectometer,
+            $"{Mass.TonneSymbol}/{Prefixes.Deca.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // TonnePerSquareDecameter,
+            $"{Mass.TonneSymbol}/{Length.BaseSymbol}{Unicode.Squared}",                         // TonnePerSquareMeter,
+            $"{Mass.TonneSymbol}/{Prefixes.Deci.Symbol}{Length.BaseSymbol}{Unicode.Squared}",   // TonnePerSquareDecimeter,
+            $"{Mass.TonneSymbol}/{Prefixes.Centi.Symbol}{Length.BaseSymbol}{Unicode.Squared}",  // TonnePerSquareCentimeter,
+            $"{Mass.TonneSymbol}/{Prefixes.Milli.Symbol}{Length.BaseSymbol}{Unicode.Squared}",  // TonnePerSquareMillimeter,
 
-            "lb/in²",   // PoundPerSquareInch,
-            "lb/ft²",   // PoundPerSquareFoot,
-            "lb/yd²",   // PoundPerSquareYard,
-            "lb/mi²",   // PoundPerSquareMile
+            $"{USCustomary.Ounce.Symbol}/{USCustomary.Inch}{Unicode.Squared}",  // OuncePerSquareInch,
+            $"{USCustomary.Ounce.Symbol}/{USCustomary.Foot}{Unicode.Squared}",  // OuncePerSquareFoot,
+            $"{USCustomary.Ounce.Symbol}/{USCustomary.Yard}{Unicode.Squared}",  // OuncePerSquareYard,
+            $"{USCustomary.Ounce.Symbol}/{USCustomary.Mile}{Unicode.Squared}",  // OuncePerSquareMile,
+
+            $"{USCustomary.Pound.Symbol}/{USCustomary.Inch}{Unicode.Squared}",  // PoundPerSquareInch,
+            $"{USCustomary.Pound.Symbol}/{USCustomary.Foot}{Unicode.Squared}",  // PoundPerSquareFoot,
+            $"{USCustomary.Pound.Symbol}/{USCustomary.Yard}{Unicode.Squared}",  // PoundPerSquareYard,
+            $"{USCustomary.Pound.Symbol}/{USCustomary.Mile}{Unicode.Squared}",  // PoundPerSquareMile
+
+            $"{USCustomary.Ton.Symbol}/{USCustomary.Inch}{Unicode.Squared}",    // TonPerSquareInch
+            $"{USCustomary.Ton.Symbol}/{USCustomary.Foot}{Unicode.Squared}",    // TonPerSquareFoot
+            $"{USCustomary.Ton.Symbol}/{USCustomary.Yard}{Unicode.Squared}",    // TonPerSquareYard
+            $"{USCustomary.Ton.Symbol}/{USCustomary.Mile}{Unicode.Squared}"     // TonPerSquareMile
         };
 
         /// <summary>
