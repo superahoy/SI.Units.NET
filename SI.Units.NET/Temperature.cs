@@ -389,45 +389,45 @@ namespace SI.Units.NET
             return new Temperature(a.Value % b, a.Unit);
         }
 
-        public static Temperature operator+(TemperatureDelta delta, Temperature temperature) 
+        public static Temperature operator+(TemperatureDifference delta, Temperature temperature) 
         {
             switch (temperature.Unit) 
             {
                 case Temperature.Units.Kelvin:
                 case Temperature.Units.Celsius:
-                    return new Temperature(temperature.Value + delta.As(TemperatureDelta.Units.DegreeCelsius).Value, temperature.Unit);
+                    return new Temperature(temperature.Value + delta.As(TemperatureDifference.Units.DegreeCelsius).Value, temperature.Unit);
                 case Temperature.Units.Rankine:
                 case Temperature.Units.Fahrenheit:
                 default:
-                    return new Temperature(temperature.Value + delta.As(TemperatureDelta.Units.DegreeFahrenheit).Value, temperature.Unit);
+                    return new Temperature(temperature.Value + delta.As(TemperatureDifference.Units.DegreeFahrenheit).Value, temperature.Unit);
             }
         }
 
-        public static Temperature operator+(Temperature temperature, TemperatureDelta delta) 
+        public static Temperature operator+(Temperature temperature, TemperatureDifference delta) 
         {
             switch (temperature.Unit) 
             {
                 case Temperature.Units.Kelvin:
                 case Temperature.Units.Celsius:
-                    return new Temperature(temperature.Value + delta.As(TemperatureDelta.Units.DegreeCelsius).Value, temperature.Unit);
+                    return new Temperature(temperature.Value + delta.As(TemperatureDifference.Units.DegreeCelsius).Value, temperature.Unit);
                 case Temperature.Units.Rankine:
                 case Temperature.Units.Fahrenheit:
                 default:
-                    return new Temperature(temperature.Value + delta.As(TemperatureDelta.Units.DegreeFahrenheit).Value, temperature.Unit);
+                    return new Temperature(temperature.Value + delta.As(TemperatureDifference.Units.DegreeFahrenheit).Value, temperature.Unit);
             }
         }
 
-        public static Temperature operator-(Temperature temperature, TemperatureDelta delta) 
+        public static Temperature operator-(Temperature temperature, TemperatureDifference delta) 
         {
             switch (temperature.Unit) 
             {
                 case Temperature.Units.Kelvin:
                 case Temperature.Units.Celsius:
-                    return new Temperature(temperature.Value - delta.As(TemperatureDelta.Units.DegreeCelsius).Value, temperature.Unit);
+                    return new Temperature(temperature.Value - delta.As(TemperatureDifference.Units.DegreeCelsius).Value, temperature.Unit);
                 case Temperature.Units.Rankine:
                 case Temperature.Units.Fahrenheit:
                 default:
-                    return new Temperature(temperature.Value - delta.As(TemperatureDelta.Units.DegreeFahrenheit).Value, temperature.Unit);
+                    return new Temperature(temperature.Value - delta.As(TemperatureDifference.Units.DegreeFahrenheit).Value, temperature.Unit);
             }
         }
 
