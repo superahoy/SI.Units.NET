@@ -258,7 +258,7 @@ namespace SI.Units.NET
             
             "fl oz/s",      // FluidOuncePerSecond,
             "fl oz/min",    // FluidOuncePerMinute,
-            "fl oz/sec",    // FluidOuncePerHour
+            "fl oz/hr",    // FluidOuncePerHour
         };
 
         /// <summary>
