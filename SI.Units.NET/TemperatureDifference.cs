@@ -6,7 +6,7 @@ namespace SI.Units.NET
     /// <summary>
     /// Represents TemperatureDelta Base Quantity type from Table 2. SI base units
     /// </summary>
-    public readonly struct TemperatureDelta : IQuantity<TemperatureDelta>
+    public readonly struct TemperatureDifference : IQuantity<TemperatureDifference>
     {
         /// <summary> Base unit of measure </summary>
         public const Units BaseUnit = Units.DegreeCelsius;
@@ -48,7 +48,7 @@ namespace SI.Units.NET
         /// <param name="value">TemperatureDelta value (amount)</param>
         /// <param name="unit">Unit of measure value is in</param>
         [JsonConstructor]
-        public TemperatureDelta(double value, Units unit)
+        public TemperatureDifference(double value, Units unit)
         {
             Value   = value; 
             Unit    = unit;
@@ -72,9 +72,9 @@ namespace SI.Units.NET
         /// <inheritdoc/>
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if ((obj is TemperatureDelta) == false) { return false; }
+            if ((obj is TemperatureDifference) == false) { return false; }
             
-            return Equals((TemperatureDelta)obj);
+            return Equals((TemperatureDifference)obj);
         }
 
         /// <inheritdoc/>
@@ -84,13 +84,13 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta ToBase()
+        public TemperatureDifference ToBase()
         {
             return As(BaseUnit);
         }
 
         /// <inheritdoc/>
-        public bool Equals(TemperatureDelta other)
+        public bool Equals(TemperatureDifference other)
         {
             if (Math.Abs(BaseValue() - other.BaseValue()) > 1.0e-14)
             {
@@ -105,9 +105,9 @@ namespace SI.Units.NET
         /// </summary>
         /// <param name="target">Target unit of measure</param>
         /// <returns>Quantity converted to target unit of measure</returns>
-        public TemperatureDelta As(Units target)
+        public TemperatureDifference As(Units target)
         {
-            return new TemperatureDelta(Value * Factors[(int)Unit] * Inverse[(int)target], target);
+            return new TemperatureDifference(Value * Factors[(int)Unit] * Inverse[(int)target], target);
         }
 
         /// <inheritdoc/>
@@ -117,7 +117,7 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public int CompareTo(TemperatureDelta other)
+        public int CompareTo(TemperatureDifference other)
         {
             return BaseValue().CompareTo(other.BaseValue());
         }
@@ -135,75 +135,75 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Sqrt()
+        public TemperatureDifference Sqrt()
         {
-            return new TemperatureDelta(Math.Sqrt(Value), Unit);
+            return new TemperatureDifference(Math.Sqrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Cbrt()
+        public TemperatureDifference Cbrt()
         {
-            return new TemperatureDelta(Math.Cbrt(Value), Unit);
+            return new TemperatureDifference(Math.Cbrt(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Log()
+        public TemperatureDifference Log()
         {
-            return new TemperatureDelta(Math.Log(Value), Unit);
+            return new TemperatureDifference(Math.Log(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Log2()
+        public TemperatureDifference Log2()
         {
-            return new TemperatureDelta(Math.Log2(Value), Unit);
+            return new TemperatureDifference(Math.Log2(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Log10()
+        public TemperatureDifference Log10()
         {
-            return new TemperatureDelta(Math.Log10(Value), Unit);
+            return new TemperatureDifference(Math.Log10(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Pow(double exp)
+        public TemperatureDifference Pow(double exp)
         {
-            return new TemperatureDelta(Math.Pow(Value, exp), Unit);
+            return new TemperatureDifference(Math.Pow(Value, exp), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Abs()
+        public TemperatureDifference Abs()
         {
-            return new TemperatureDelta(Math.Abs(Value), Unit);
+            return new TemperatureDifference(Math.Abs(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Floor()
+        public TemperatureDifference Floor()
         {
-            return new TemperatureDelta(Math.Floor(Value), Unit);
+            return new TemperatureDifference(Math.Floor(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Ceiling()
+        public TemperatureDifference Ceiling()
         {
-            return new TemperatureDelta(Math.Ceiling(Value), Unit);
+            return new TemperatureDifference(Math.Ceiling(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Truncate()
+        public TemperatureDifference Truncate()
         {
-            return new TemperatureDelta(Math.Truncate(Value), Unit);
+            return new TemperatureDifference(Math.Truncate(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Round()
+        public TemperatureDifference Round()
         {
-            return new TemperatureDelta(Math.Round(Value), Unit);
+            return new TemperatureDifference(Math.Round(Value), Unit);
         }
 
         /// <inheritdoc/>
-        public TemperatureDelta Round(int digits)
+        public TemperatureDifference Round(int digits)
         {
-            return new TemperatureDelta(Math.Round(Value, digits), Unit);
+            return new TemperatureDifference(Math.Round(Value, digits), Unit);
         }
 
         /// <inheritdoc/>
@@ -237,18 +237,18 @@ namespace SI.Units.NET
         }
 
         /// <inheritdoc/>
-        public static TemperatureDelta Parse(string s, IFormatProvider? provider)
+        public static TemperatureDifference Parse(string s, IFormatProvider? provider)
         {
             var tokens  = s.Split(' ', 2);
 
             var value   = double.Parse(tokens[0]);
             var unit    = (Units)Array.IndexOf(Symbols, tokens[1].Trim());
 
-            return new TemperatureDelta(value, unit);
+            return new TemperatureDifference(value, unit);
         }
 
         /// <inheritdoc/>
-        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out TemperatureDelta result)
+        public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out TemperatureDifference result)
         {
             if (string.IsNullOrEmpty(s))
             {
@@ -263,101 +263,101 @@ namespace SI.Units.NET
             }
             catch
             {
-                result = default(TemperatureDelta);
+                result = default(TemperatureDifference);
                 return false;
             }
         }
 
         #region OperatorOverloading
 
-        public static TemperatureDelta operator++(TemperatureDelta value)
+        public static TemperatureDifference operator++(TemperatureDifference value)
         {
-            return new TemperatureDelta(value.Value + 1, value.Unit);
+            return new TemperatureDifference(value.Value + 1, value.Unit);
         }
 
-        public static TemperatureDelta operator--(TemperatureDelta value)
+        public static TemperatureDifference operator--(TemperatureDifference value)
         {
-            return new TemperatureDelta(value.Value - 1, value.Unit);
+            return new TemperatureDifference(value.Value - 1, value.Unit);
         }
 
-        public static TemperatureDelta operator/(TemperatureDelta value, double scalar)
+        public static TemperatureDifference operator/(TemperatureDifference value, double scalar)
         {
-            return new TemperatureDelta(value.Value / scalar, value.Unit);
+            return new TemperatureDifference(value.Value / scalar, value.Unit);
         }
 
-        public static TemperatureDelta operator*(TemperatureDelta value, double scalar)
+        public static TemperatureDifference operator*(TemperatureDifference value, double scalar)
         {
-            return new TemperatureDelta(value.Value * scalar, value.Unit);
+            return new TemperatureDifference(value.Value * scalar, value.Unit);
         }
 
-        public static TemperatureDelta operator*(double scalar, TemperatureDelta value)
+        public static TemperatureDifference operator*(double scalar, TemperatureDifference value)
         {
-            return new TemperatureDelta(value.Value * scalar, value.Unit);
+            return new TemperatureDifference(value.Value * scalar, value.Unit);
         }
 
-        public static TemperatureDelta operator-(TemperatureDelta a)
+        public static TemperatureDifference operator-(TemperatureDifference a)
         {
-            return new TemperatureDelta(-a.Value, a.Unit);
+            return new TemperatureDifference(-a.Value, a.Unit);
         }
 
-        public static TemperatureDelta operator-(TemperatureDelta a, TemperatureDelta b)
-        {
-            if (a.Unit == b.Unit)
-            {
-                return new TemperatureDelta(a.Value - b.Value, a.Unit);
-            }
-
-            return new TemperatureDelta(a.BaseValue() - b.BaseValue(), BaseUnit);
-        }
-
-        public static TemperatureDelta operator+(TemperatureDelta a, TemperatureDelta b)
+        public static TemperatureDifference operator-(TemperatureDifference a, TemperatureDifference b)
         {
             if (a.Unit == b.Unit)
             {
-                return new TemperatureDelta(a.Value + b.Value, a.Unit);
+                return new TemperatureDifference(a.Value - b.Value, a.Unit);
             }
 
-            return new TemperatureDelta(a.BaseValue() + b.BaseValue(), BaseUnit);
+            return new TemperatureDifference(a.BaseValue() - b.BaseValue(), BaseUnit);
         }
 
-        public static double operator/(TemperatureDelta a, TemperatureDelta b)
+        public static TemperatureDifference operator+(TemperatureDifference a, TemperatureDifference b)
+        {
+            if (a.Unit == b.Unit)
+            {
+                return new TemperatureDifference(a.Value + b.Value, a.Unit);
+            }
+
+            return new TemperatureDifference(a.BaseValue() + b.BaseValue(), BaseUnit);
+        }
+
+        public static double operator/(TemperatureDifference a, TemperatureDifference b)
         {
             return a.BaseValue() / b.BaseValue();
         }
 
-        public static bool operator==(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator==(TemperatureDifference a, TemperatureDifference b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator!=(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator!=(TemperatureDifference a, TemperatureDifference b)
         {
             return !a.Equals(b);
         }
 
-        public static bool operator>(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator>(TemperatureDifference a, TemperatureDifference b)
         {
             return a.BaseValue() > b.BaseValue();
         }
 
-        public static bool operator<(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator<(TemperatureDifference a, TemperatureDifference b)
         {
             return a.BaseValue() < b.BaseValue();
         }
 
-        public static bool operator>=(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator>=(TemperatureDifference a, TemperatureDifference b)
         {
             return a.BaseValue() >= b.BaseValue();
         }
 
-        public static bool operator<=(TemperatureDelta a, TemperatureDelta b)
+        public static bool operator<=(TemperatureDifference a, TemperatureDifference b)
         {
             return a.BaseValue() <= b.BaseValue();
         }
 
-        public static TemperatureDelta operator%(TemperatureDelta a, double b)
+        public static TemperatureDifference operator%(TemperatureDifference a, double b)
         {
-            return new TemperatureDelta(a.Value % b, a.Unit);
+            return new TemperatureDifference(a.Value % b, a.Unit);
         }
 
         #endregion
