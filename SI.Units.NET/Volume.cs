@@ -85,10 +85,10 @@ namespace SI.Units.NET
             Prefixes.Deca.Symbol    + BaseSymbol,
             Prefixes.Hecto.Symbol   + BaseSymbol,
             Prefixes.Kilo.Symbol    + BaseSymbol,
-            "in³",  // CubicInch
-            "ft³",  // CubicFoot,
-            "yd³",  // CubicYard
-            "mi³",  // CubicMile,
+            $"{USCustomary.Inch.Symbol}{Unicode.Cubed}",  // CubicInch
+            $"{USCustomary.Foot.Symbol}{Unicode.Cubed}",  // CubicFoot,
+            $"{USCustomary.Yard.Symbol}{Unicode.Cubed}",  // CubicYard
+            $"{USCustomary.Mile.Symbol}{Unicode.Cubed}",  // CubicMile,
             LiterSymbol,                            // Liter,
             Prefixes.Deci.Symbol  + LiterSymbol,    // Deciliter,
             Prefixes.Centi.Symbol + LiterSymbol,    // Centiliter,
